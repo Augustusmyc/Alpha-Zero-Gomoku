@@ -16,7 +16,7 @@ Both GPU and CPU (GPU test on Tesla V100 + Cuda 11 / CPU test on Intel i7)
 
 
 # Language
-C++ (for speed!) and python. The model is trained by pytorch(Python) and onnxruntime(C++,for selfplay), and inferenced by onnxruntime(C++).
+C++ (for speed!) and python. The model is trained by pytorch (Python) and onnxruntime (C++,for selfplay), and inferenced by onnxruntime (C++).
 
 
 # Dependence
