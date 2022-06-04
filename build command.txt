@@ -1,0 +1,10 @@
+mkdir build
+copy "train_net.sh" and "train.sh" to ./build
+
+cd .\build
+cmake -A x64 ..    (or just "cmake ..")
+cmake --build . --config Release
+
+run the exe file (cd .\Release\) or bin file
+
+
