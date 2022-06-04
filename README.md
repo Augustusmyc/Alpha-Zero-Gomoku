@@ -26,8 +26,12 @@ cmake 3.13+
 
 pytorch (tested on 1.11 and 1.7)
 
+onnxruntime-gpu (tested on 1.11)
+
 
 # Installation
+change the onnxruntime path in CMakefiles.txt
+
 mkdir build
 
 copy *.sh to ./build
@@ -52,4 +56,16 @@ run mcts_test, for example in linux:
 
 ./mcts_test ./weights/1000.onnx 1
 
-Here 1(or 0) = AI play with black(or white) pieces. 
+Here 1(or 0) = AI play with black(or white) pieces.
+
+# About This Project (Chinese)
+
+一个使用pytorch + onnxruntime训练的Alpha Zero训练框架。
+onnxruntime主要负责“左右互搏”的部分，pytorch负责模型参数优化。
+
+目前游戏仅支持五子棋和井字棋，如果有其它小伙伴愿意提供其它棋类游戏的源码，这里非常欢迎。
+
+支持多线程蒙特卡洛树搜索,该部分和模型推理部分均由c++完成（主要是为了加快速度，并且避开python GIL的坑）
+
+由于我这边主要用linux训练，windows相应的代码可能未来不会及时更新，需要修改一下才能用。
+
