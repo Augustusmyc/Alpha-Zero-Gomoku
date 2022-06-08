@@ -1,6 +1,12 @@
 # Alpha-Zero-Gomoku
 Gomoku AI (Alpha Zero) implemented by pytorch and onnxruntime.
 
+# Tutorial About Alpha Zero:
+bilibili (part 1-3):
+https://www.bilibili.com/video/BV1a5411Q7en/
+https://www.bilibili.com/video/BV1tL4y1K7UB/
+https://www.bilibili.com/video/BV1Fa411L7ea/
+
 # Supported Games
 Currently only Gomoku and similar games such as Tic-Tac-Toe. 
 
@@ -65,7 +71,7 @@ onnxruntime主要负责“左右互搏”的部分，pytorch负责模型参数�
 
 目前游戏仅支持五子棋和井字棋，如果有其它小伙伴愿意提供其它棋类游戏的源码，这里非常欢迎。
 
-支持多线程蒙特卡洛树搜索,该部分和模型推理部分均由c++完成（主要是为了加快速度，并且避开python GIL的坑）。
+支持多线程蒙特卡洛树搜索,该部分和模型推理（用于左右互搏）部分均由c++完成，之所以不用python主要是为了加快速度，并且避开python GIL的坑。
 
-由于我这边主要用linux训练，windows相应的代码可能未来不会及时更新，需要修改一下才能用。
+本项目支持windows和linux平台。由于我主要在linux上训练，windows相应的代码可能未来不会及时更新，需要修改一下才能用。
 
