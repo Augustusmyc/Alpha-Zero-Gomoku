@@ -166,7 +166,7 @@ int main(int argc, char *argv[])
         ifstream random_mcts_logger_reader("random_mcts_number.txt");
         random_mcts_logger_reader >> random_mcts_simulation;
 
-        int nn_mcts_simulation = NUM_MCT_SIMS / 4; // can not be too small !!
+        int nn_mcts_simulation = NUM_MCT_SIMS / 16; // can not be too small !!
 
         vector<int> result_random_mcts = eval(current_weight, -1, game_num, nn_mcts_simulation, random_mcts_simulation);
         
