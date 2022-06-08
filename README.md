@@ -3,6 +3,7 @@ Gomoku AI (Alpha Zero) implemented by pytorch and onnxruntime.
 
 # Tutorial About Alpha Zero:
 bilibili (part 1-3):
+
 https://www.bilibili.com/video/BV1a5411Q7en/
 https://www.bilibili.com/video/BV1tL4y1K7UB/
 https://www.bilibili.com/video/BV1Fa411L7ea/
@@ -57,12 +58,16 @@ bash train_net.sh
 If you want to train the model on windows 10, transform "train.sh" to "train.bat" and fix corresponding commands.
 
 
-# Human play with AI
+# Human play with AI (inference)
 run mcts_test, for example in linux:
 
 ./mcts_test ./weights/1000.onnx 1
 
-Here 1(or 0) = AI play with black(or white) pieces.
+Here 1(or 0) = AI play with black(or white) pieces. 
+
+The newest trained model are put in "model" directory. 
+
+Increase or decrease "NUM_MCT_SIMS" in include/common.h (default 1600) to increase the power or speed of AI.
 
 # About This Project (Chinese)
 
