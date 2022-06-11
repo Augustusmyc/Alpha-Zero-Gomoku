@@ -1,11 +1,13 @@
 # Alpha-Zero-Gomoku
 Gomoku AI (Alpha Zero) implemented by pytorch and onnxruntime.
 
-# Tutorial About Alpha Zero:
+# Tutorial About Alpha Zero (Chinese):
 bilibili (part 1-3):
 
 https://www.bilibili.com/video/BV1a5411Q7en/
+
 https://www.bilibili.com/video/BV1tL4y1K7UB/
+
 https://www.bilibili.com/video/BV1Fa411L7ea/
 
 # Supported Games
