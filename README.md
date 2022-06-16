@@ -10,6 +10,10 @@ https://www.bilibili.com/video/BV1tL4y1K7UB/
 
 https://www.bilibili.com/video/BV1Fa411L7ea/
 
+PPT(Chinese):
+
+AlphaZero-AI网络教程.pptx
+
 # Supported Games
 Currently only Gomoku and similar games such as Tic-Tac-Toe. 
 
