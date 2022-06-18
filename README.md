@@ -33,7 +33,7 @@ C++ (for speed!) and python. The model is trained by pytorch (Python) and onnxru
 
 
 # Dependence
-gcc(linux) or visual studio 19(windows)
+gcc (linux) or visual studio 19 (windows)
 
 cmake 3.13+
 
