@@ -117,6 +117,9 @@ NeuralNetwork::~NeuralNetwork()
 {
   this->running = false;
   this->loop->join();
+  // release buffers allocated by ORT alloctor
+  for(const char* node_name : input_node_names)
+    allocator.Free(const_cast<void*>(reinterpret_cast<const void*>(node_name)));
 }
 
 std::future<NeuralNetwork::return_type> NeuralNetwork::commit(Gomoku *gomoku)

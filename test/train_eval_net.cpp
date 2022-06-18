@@ -81,7 +81,7 @@ vector<int> eval(int weight_a, int weight_b, unsigned int game_num,int a_sims,in
     std::vector<std::future<void>> futures;
     //NeuralNetwork* a = new NeuralNetwork(NUM_MCT_THREADS * NUM_MCT_SIMS);
     for (unsigned int i = 0; i < game_num; i++) {
-        auto future = thread_pool->commit(std::bind(play_for_eval, nn_a, nn_b, i % 2 == 0, win_table,i==0, a_sims, b_sims));
+        auto future = thread_pool->commit(std::bind(play_for_eval, nn_a, nn_b, false, win_table,false, a_sims, b_sims));
         futures.emplace_back(std::move(future));
     }
     for (unsigned int i = 0; i < futures.size(); i++) {
@@ -139,8 +139,8 @@ int main(int argc, char *argv[])
         logger_reader.close();
         cout << "Generating... current_weight = " << current_weight << endl;
         generate_data_for_train(current_weight, atoi(argv[2]) * NUM_TRAIN_THREADS);
-    }else if (strcmp(argv[1], "eval") == 0) {
-		int current_weight;
+    }else if (strcmp(argv[1], "eval_with_winner") == 0) {
+	   int current_weight;
         int best_weight;
 
         ifstream weight_logger_reader("current_and_best_weight.txt");
@@ -162,6 +162,21 @@ int main(int argc, char *argv[])
         }
         cout << result_log_info;
 
+        ofstream detail_logger_writer("logger.txt", ios::app);
+        // detail_logger_writer << result_log_info << result_log_info2;
+        detail_logger_writer << result_log_info;
+        detail_logger_writer.close();
+        
+    }else if (strcmp(argv[1], "eval_with_random") == 0) {
+    	   int current_weight;
+        int best_weight;
+
+        ifstream weight_logger_reader("current_and_best_weight.txt");
+        weight_logger_reader >> current_weight;
+        //weight_logger_reader >> best_weight;
+
+        int game_num = atoi(argv[2]);
+
         int random_mcts_simulation;
         ifstream random_mcts_logger_reader("random_mcts_number.txt");
         random_mcts_logger_reader >> random_mcts_simulation;
@@ -172,18 +187,26 @@ int main(int argc, char *argv[])
         
         
         string result_log_info2 = to_string(current_weight) + "-th weight with mcts ["+ to_string(nn_mcts_simulation) + "] win: " + to_string(result_random_mcts[0]) + "  Random mcts ["+to_string(random_mcts_simulation)+ "] win: " + to_string(result_random_mcts[1]) + "  tie: " + to_string(result_random_mcts[2]) + "\n";
-        if (result_random_mcts[0] - game_num==0 && random_mcts_simulation < 5000) {
-            random_mcts_simulation += 100;
-            result_log_info2 += "add random mcts number to: " + to_string(random_mcts_simulation) + "\n";
+        if (result_random_mcts[0] == game_num) {
+        		if(random_mcts_simulation < 8000){
+        			random_mcts_simulation += 100;
+             		result_log_info2 += "add random mcts number to: " + to_string(random_mcts_simulation) + "\n";
+             		ofstream random_mcts_logger_writer("random_mcts_number.txt");
+	               random_mcts_logger_writer << random_mcts_simulation;
+	               random_mcts_logger_writer.close();
+        			}    
 
-            ofstream random_mcts_logger_writer("random_mcts_number.txt");
-            random_mcts_logger_writer << random_mcts_simulation;
-            random_mcts_logger_writer.close();
-        }
-        cout << result_log_info2;
+             ///////////////
+		  result_log_info2 += "new best weight: " + to_string(current_weight) + " generated!!!!\n";
+            ofstream weight_logger_writer("current_and_best_weight.txt");
+            weight_logger_writer << current_weight << " " << current_weight;
+            weight_logger_writer.close();
+             //////////////
+         }
+         cout << result_log_info2;
 
         ofstream detail_logger_writer("logger.txt", ios::app);
-        detail_logger_writer << result_log_info << result_log_info2;
+        detail_logger_writer << result_log_info2;
         detail_logger_writer.close();
     }else{
         cout << "Do nothing...check your input!!" << endl;

@@ -37,13 +37,23 @@ gcc(linux) or visual studio 19(windows)
 
 cmake 3.13+
 
-pytorch (tested on 1.11 and 1.7)
+pytorch (tested on 1.11)
 
 onnxruntime-gpu (tested on 1.11)
 
 
 # Installation
-change the onnxruntime path in CMakefiles.txt
+Download and install miniconda / python
+and "pip install" all the dependent packages such as pytorch
+
+train.sh: convert "/data/miniconda3/bin/python" to "python" or "python3" or your own python intepreter path
+
+Download onnxruntime: https://github.com/microsoft/onnxruntime/releases/tag/v1.11.1
+
+CMakefiles.txt:  convert the onnxruntime path to your own path
+
+
+
 
 mkdir build
 
@@ -61,7 +71,7 @@ cd ./build
 
 bash train_net.sh
 
-If you want to train the model on windows 10, transform "train.sh" to "train.bat" and fix corresponding commands.
+If you want to train the model on windows 10, convert "train.sh" to "train.bat" and change corresponding commands.
 
 
 # Human play with AI (inference)
@@ -71,7 +81,7 @@ run mcts_test, for example in linux:
 
 Here 1(or 0) = AI play with black(or white) pieces. 
 
-The newest trained model are put in "model" directory. 
+The newest trained model will be updated in "model" directory. 
 
 Increase or decrease "NUM_MCT_SIMS" in include/common.h (default 1600) to increase the power or speed of AI.
 

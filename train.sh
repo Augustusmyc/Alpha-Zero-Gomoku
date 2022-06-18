@@ -6,7 +6,7 @@ if [ $do_prepare == 1 ]
 then
 	echo "preparing........"
 	bash ./train_net.sh prepare
-	python ../python/learner.py
+	/data/miniconda3/bin/python ../python/learner.py
 fi
 
 while [  $n -le 2000 ]
@@ -20,6 +20,7 @@ do
 	done
 	wait
 	/data/miniconda3/bin/python ../python/learner.py train
-	bash ./train_net.sh eval 10
+#	bash ./train_net.sh eval_with_winner 10
+	bash ./train_net.sh eval_with_random 10
 	let n++
 done

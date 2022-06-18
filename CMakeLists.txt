@@ -31,13 +31,13 @@ aux_source_directory(./cpp SOURCES)
 
 add_library(test_lib ${SOURCES})
 ADD_EXECUTABLE(train_eval_net  ./test/train_eval_net.cpp)
-target_link_libraries(train_eval_net test_lib)
-target_link_libraries(train_eval_net onnxruntime)
-
 ADD_EXECUTABLE(mcts_test  ./test/mcts_test.cpp)
-target_link_libraries(mcts_test test_lib)
-target_link_libraries(mcts_test onnxruntime)
 
+target_link_libraries(train_eval_net test_lib)
+target_link_libraries(mcts_test test_lib)
+
+target_link_libraries(train_eval_net onnxruntime)
+target_link_libraries(mcts_test onnxruntime)
 
 if (MSVC)
  file(GLOB ONNX_DLLS "${ONNXRUNTIME_ROOTDIR}/lib/*.dll")

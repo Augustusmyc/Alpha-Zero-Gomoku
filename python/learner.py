@@ -83,6 +83,7 @@ class Learner():
 
         model_path = path.join(model_dir, str(model_id+1))
         self.nnet.save_model(model_path)
+        torch.cuda.empty_cache()
 
     def get_symmetries(self, board, pi, last_action):
         # mirror, rotational

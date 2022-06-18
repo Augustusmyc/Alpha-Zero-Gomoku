@@ -167,6 +167,8 @@ class NeuralNetWorkWrapper():
             board_batch, last_action_batch, cur_player_batch, p_batch, v_batch = list(zip(*train_data))
 
             state_batch = self._data_convert(board_batch, last_action_batch, cur_player_batch)
+            p_batch = np.array(p_batch)
+            v_batch = np.array(v_batch)
             p_batch = torch.Tensor(p_batch).cuda() if self.is_cuda_available else torch.Tensor(p_batch)
             v_batch = torch.Tensor(v_batch).unsqueeze(
                 1).cuda() if self.is_cuda_available else torch.Tensor(v_batch).unsqueeze(1)
@@ -218,7 +220,7 @@ class NeuralNetWorkWrapper():
         """
         n = self.n
 
-        board_batch = torch.Tensor(board_batch).unsqueeze(1)
+        board_batch = torch.Tensor(np.array(board_batch)).unsqueeze(1)
         state0 = (board_batch > 0).float()
         state1 = (board_batch < 0).float()
 
@@ -253,6 +255,8 @@ class NeuralNetWorkWrapper():
         state = torch.load(filepath+'.pkl')
         self.neural_network.load_state_dict(state['network'])
         self.optim.load_state_dict(state['optim'])
+        if self.is_cuda_available:
+            self.neural_network.cuda()
 
 
     def save_model(self, filepath):
@@ -265,12 +269,13 @@ class NeuralNetWorkWrapper():
         # save torchscript or onnx
         self.neural_network.eval()
 
-        if self.is_cuda_available:
-            self.neural_network.cuda()
-            example = torch.rand(1, self.input_channel_size, self.n, self.n).cuda()
-        else:
-            self.neural_network.cpu()
-            example = torch.rand(1, self.input_channel_size, self.n, self.n).cpu()
+        # if self.is_cuda_available:
+        #     self.neural_network.cuda()
+        #     example = torch.rand(1, self.input_channel_size, self.n, self.n).cuda()
+        # else:
+
+        self.neural_network.cpu()
+        example = torch.rand(1, self.input_channel_size, self.n, self.n).cpu()
         dynamic_axes={"board":{0:"batch_size"},     # 批处理变量
                                     "P":{0:"batch_size"},"V":{0:"batch_size"}}
         torch.onnx.export(self.neural_network,

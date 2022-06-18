@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
   if (argc <= 1) {
       //cout << "Do not load weights. AI color = BLACK." << endl;
       
-      cout << "Warning: Find No weight path and color, assume they are ... and 1 (AI color:Black)" << endl;
+      cout << "Warning: Find No weight path and color, assume they are mymodel and 1 (AI color:Black)" << endl;
 #ifdef _WIN32
   module = new NeuralNetwork("E:/Projects/AlphaZero-Onnx/python/mymodel.onnx", NUM_MCT_SIMS);
 #else
