@@ -15,6 +15,7 @@ public:
   bool has_legal_moves();
   std::vector<int> get_legal_moves();
   void execute_move(move_type move);
+  void take_back_move();
   std::pair<int, int> get_game_status();
   void display() const;
   void render();
@@ -29,6 +30,7 @@ public:
 
 private:
   board_type board;      // game borad
+  std::vector<move_type> record_list;   // record moves in order
   const unsigned int n;        // board size
   const unsigned int n_in_row; // 5 in row or else
 

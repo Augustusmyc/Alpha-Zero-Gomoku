@@ -7,6 +7,7 @@
 Gomoku::Gomoku(const unsigned int n, const unsigned int n_in_row, int first_color)
     : n(n), n_in_row(n_in_row), cur_color(first_color), last_move(-1) {
   this->board = std::vector<std::vector<int>>(n, std::vector<int>(n, 0));
+  this->record_list.clear();
 }
 
 bool Gomoku::is_illegal(unsigned int x, unsigned int y){
@@ -50,9 +51,28 @@ void Gomoku::execute_move(move_type move) {
   }
 
   this->board[i][j] = this->cur_color;
+  this->record_list.push_back(move);
   this->last_move = move;
   // change player
   this->cur_color = -this->cur_color;
+}
+
+void Gomoku::take_back_move()
+{
+  size_t s_tmp = this->record_list.size();
+  if (s_tmp >= 1)
+    this->record_list.pop_back();
+  size_t s_new = this->record_list.size();
+
+  if (s_new + 1 == s_tmp)
+  {
+    auto i = this->last_move / this->n;
+    auto j = this->last_move % this->n;
+    this->board[i][j] = 0;
+    this->last_move = this->record_list.back();
+    // change player
+    this->cur_color = -this->cur_color;
+  }
 }
 
 std::pair<int, int> Gomoku::get_game_status() {
