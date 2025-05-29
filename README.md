@@ -21,7 +21,7 @@ Welcome other game implementions if you want to become the contributor!
 
 
 # Supported OS System
-linux/Windows (tested on Ubuntu 20 + GPU and Windows 10 + GPU or CPU)
+linux/Windows (tested on Ubuntu 22 + GPU and Windows 10 + GPU or CPU)
 
 
 # Supported Enviroment
@@ -37,9 +37,9 @@ gcc (linux) or visual studio 19 (windows)
 
 cmake 4.0.0+
 
-pytorch (tested on onnx-v1.22.0)
+pytorch (tested on onnxruntime-v1.22.0)
 
-onnxruntime-gpu (tested on onnx-v1.22.0)
+onnxruntime-gpu (tested on onnxruntime-v1.22.0)
 
 
 # Installation
@@ -61,9 +61,9 @@ copy *.sh to ./build
 
 cd ./build
 
-cmake ..    (or "cmake -A x64 ..")
+cmake ..    (or  win10: "cmake -A x64 ..")
 
-cmake --build . --config Release   (or open .sln file through visual Studio 19 and generate for win10)
+cmake --build . --config Release   (or win10: open .sln file through visual Studio 19 and generate)
 
 
 # Train (Linux)
@@ -75,13 +75,13 @@ chmod 777 train_net.sh
 
 bash train.sh
 
-If you want to train the model on windows 10, convert "train.sh" to "train.bat" and change corresponding commands.
+If you want to train the model on windows 10, convert "train.sh" to "train.bat" and transfer commands.
 
 
 # Human play with AI (inference)
 run mcts_test, for example in linux:
 
-./mcts_test ./weights/1000.onnx 1
+./mcts_test ./weights/423.onnx 1
 
 Here 1(or 0) = AI play with black(or white) pieces. 
 
