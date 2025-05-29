@@ -7,7 +7,7 @@ import common as config
 # import pickle
 # import concurrent.futures
 import random, struct
-from functools import reduce
+# from functools import reduce
 
 import sys
 

@@ -25,7 +25,7 @@ linux/Windows (tested on Ubuntu 20 + GPU and Windows 10 + GPU or CPU)
 
 
 # Supported Enviroment
-Both GPU and CPU (GPU test on Tesla V100 + Cuda 11 / CPU test on Intel i7)
+Both GPU and CPU (GPU test on GTX 4090 + Cuda 12 / CPU test on Intel i7)
 
 
 # Language
@@ -35,20 +35,20 @@ C++ (for speed!) and python. The model is trained by pytorch (Python) and onnxru
 # Dependence
 gcc (linux) or visual studio 19 (windows)
 
-cmake 3.13+
+cmake 4.0.0+
 
-pytorch (tested on 1.11)
+pytorch (tested on onnx-v1.22.0)
 
-onnxruntime-gpu (tested on 1.11)
+onnxruntime-gpu (tested on onnx-v1.22.0)
 
 
 # Installation
 Download and install miniconda / python
-and "pip install" all the dependent packages such as pytorch
+and "pip install" all the dependent packages such as pytorch，onnx ...
 
-train.sh: convert "/data/miniconda3/bin/python" to "python" or "python3" or your own python intepreter path
+train.sh: convert "python" to "/data/miniconda3/bin/python" or "python3" or your own python intepreter path
 
-Download onnxruntime: https://github.com/microsoft/onnxruntime/releases/tag/v1.11.1
+Download onnxruntime: https://github.com/microsoft/onnxruntime/releases/tag/v1.22.0
 
 CMakefiles.txt:  convert the onnxruntime path to your own path
 
@@ -69,7 +69,11 @@ cmake --build . --config Release   (or open .sln file through visual Studio 19 a
 # Train (Linux)
 cd ./build
 
-bash train_net.sh
+chmod 777 train.sh
+
+chmod 777 train_net.sh
+
+bash train.sh
 
 If you want to train the model on windows 10, convert "train.sh" to "train.bat" and change corresponding commands.
 

@@ -113,32 +113,6 @@ void TreeNode::expand(const std::vector<double> &action_priors) {
   }
 }
 
-//void TreeNode::expand(const std::vector<double>& action_priors), std::vector<int>& legal_moves) {
-//    {
-//        // get lock
-//        std::lock_guard<std::mutex> lock(this->lock);
-//
-//        if (this->is_leaf) {
-//            unsigned int action_size = this->children.size();
-//
-//
-//            for (unsigned int i = 0; i < action_size; i++) {
-//                // illegal action
-//                if (legal_moves[i] < FLT_EPSILON)  {
-//                    //std::cout << "illegal action " << i << " is: "<<action_priors[i] << std::endl;
-//                    //std::cout << "illegal action " << i << " is: "<<abs(action_priors[i]) << std::endl;
-//                    continue;
-//                }
-//                this->children[i] = new TreeNode(this, action_priors[i], action_size);
-//                //std::cout << "action_priors[i] = " <<i<< action_priors[i] << std::endl;
-//            }
-//
-//            // not leaf
-//            this->is_leaf = false;
-//        }//else{std::cout << "why not leaf !?" << std::endl;}
-//    }
-//}
-
 
 
 void TreeNode::backup(double value) {

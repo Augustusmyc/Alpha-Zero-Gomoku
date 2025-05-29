@@ -1,0 +1,1010 @@
+1-th weight win: 4  0-th weight win: 6  tie: 0
+1-th weight with mcts [100] win: 0  Random mcts [1600] win: 10  tie: 0
+2-th weight win: 2  0-th weight win: 8  tie: 0
+2-th weight with mcts [100] win: 0  Random mcts [1600] win: 10  tie: 0
+3-th weight win: 7  0-th weight win: 3  tie: 0
+new best weight: 3 generated!!!!
+3-th weight with mcts [100] win: 0  Random mcts [1600] win: 10  tie: 0
+4-th weight win: 6  3-th weight win: 4  tie: 0
+new best weight: 4 generated!!!!
+4-th weight with mcts [100] win: 0  Random mcts [1600] win: 10  tie: 0
+5-th weight win: 9  4-th weight win: 1  tie: 0
+new best weight: 5 generated!!!!
+5-th weight with mcts [100] win: 2  Random mcts [1600] win: 8  tie: 0
+6-th weight win: 10  5-th weight win: 0  tie: 0
+new best weight: 6 generated!!!!
+6-th weight with mcts [100] win: 4  Random mcts [1600] win: 6  tie: 0
+7-th weight win: 8  6-th weight win: 2  tie: 0
+new best weight: 7 generated!!!!
+7-th weight with mcts [100] win: 5  Random mcts [1600] win: 5  tie: 0
+8-th weight win: 10  7-th weight win: 0  tie: 0
+new best weight: 8 generated!!!!
+8-th weight with mcts [100] win: 3  Random mcts [1600] win: 7  tie: 0
+9-th weight win: 2  8-th weight win: 8  tie: 0
+9-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+10-th weight win: 10  8-th weight win: 0  tie: 0
+new best weight: 10 generated!!!!
+10-th weight with mcts [100] win: 7  Random mcts [1600] win: 3  tie: 0
+11-th weight win: 10  10-th weight win: 0  tie: 0
+new best weight: 11 generated!!!!
+11-th weight with mcts [100] win: 7  Random mcts [1600] win: 3  tie: 0
+12-th weight win: 7  11-th weight win: 3  tie: 0
+new best weight: 12 generated!!!!
+12-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+13-th weight win: 9  12-th weight win: 1  tie: 0
+new best weight: 13 generated!!!!
+13-th weight with mcts [100] win: 8  Random mcts [1600] win: 2  tie: 0
+14-th weight win: 10  13-th weight win: 0  tie: 0
+new best weight: 14 generated!!!!
+14-th weight with mcts [100] win: 9  Random mcts [1600] win: 1  tie: 0
+15-th weight win: 1  14-th weight win: 9  tie: 0
+15-th weight with mcts [100] win: 8  Random mcts [1600] win: 2  tie: 0
+16-th weight win: 10  14-th weight win: 0  tie: 0
+new best weight: 16 generated!!!!
+16-th weight with mcts [100] win: 8  Random mcts [1600] win: 2  tie: 0
+17-th weight win: 8  16-th weight win: 2  tie: 0
+new best weight: 17 generated!!!!
+17-th weight with mcts [100] win: 9  Random mcts [1600] win: 1  tie: 0
+18-th weight win: 5  17-th weight win: 5  tie: 0
+18-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+19-th weight win: 10  17-th weight win: 0  tie: 0
+new best weight: 19 generated!!!!
+19-th weight with mcts [100] win: 8  Random mcts [1600] win: 2  tie: 0
+20-th weight win: 9  19-th weight win: 1  tie: 0
+new best weight: 20 generated!!!!
+20-th weight with mcts [100] win: 5  Random mcts [1600] win: 5  tie: 0
+21-th weight win: 10  20-th weight win: 0  tie: 0
+new best weight: 21 generated!!!!
+21-th weight with mcts [100] win: 7  Random mcts [1600] win: 3  tie: 0
+22-th weight win: 1  21-th weight win: 9  tie: 0
+22-th weight with mcts [100] win: 7  Random mcts [1600] win: 3  tie: 0
+23-th weight win: 8  21-th weight win: 2  tie: 0
+new best weight: 23 generated!!!!
+23-th weight with mcts [100] win: 9  Random mcts [1600] win: 1  tie: 0
+24-th weight win: 5  23-th weight win: 5  tie: 0
+24-th weight with mcts [100] win: 8  Random mcts [1600] win: 2  tie: 0
+25-th weight win: 0  23-th weight win: 10  tie: 0
+25-th weight with mcts [100] win: 9  Random mcts [1600] win: 1  tie: 0
+26-th weight win: 0  23-th weight win: 10  tie: 0
+26-th weight with mcts [100] win: 8  Random mcts [1600] win: 2  tie: 0
+27-th weight win: 2  23-th weight win: 8  tie: 0
+27-th weight with mcts [100] win: 7  Random mcts [1600] win: 3  tie: 0
+28-th weight win: 2  23-th weight win: 8  tie: 0
+28-th weight with mcts [100] win: 9  Random mcts [1600] win: 1  tie: 0
+29-th weight win: 1  23-th weight win: 9  tie: 0
+29-th weight with mcts [100] win: 5  Random mcts [1600] win: 5  tie: 0
+30-th weight win: 9  23-th weight win: 1  tie: 0
+new best weight: 30 generated!!!!
+30-th weight with mcts [100] win: 5  Random mcts [1600] win: 5  tie: 0
+31-th weight win: 5  30-th weight win: 5  tie: 0
+31-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+32-th weight win: 10  30-th weight win: 0  tie: 0
+new best weight: 32 generated!!!!
+32-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+33-th weight win: 4  32-th weight win: 6  tie: 0
+33-th weight with mcts [100] win: 4  Random mcts [1600] win: 6  tie: 0
+34-th weight win: 1  32-th weight win: 9  tie: 0
+34-th weight with mcts [100] win: 5  Random mcts [1600] win: 5  tie: 0
+35-th weight win: 8  32-th weight win: 2  tie: 0
+new best weight: 35 generated!!!!
+35-th weight with mcts [100] win: 2  Random mcts [1600] win: 8  tie: 0
+36-th weight win: 0  35-th weight win: 10  tie: 0
+36-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+37-th weight win: 4  35-th weight win: 6  tie: 0
+37-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+38-th weight win: 7  35-th weight win: 3  tie: 0
+new best weight: 38 generated!!!!
+38-th weight with mcts [100] win: 7  Random mcts [1600] win: 3  tie: 0
+39-th weight win: 3  38-th weight win: 7  tie: 0
+39-th weight with mcts [100] win: 3  Random mcts [1600] win: 7  tie: 0
+40-th weight win: 5  38-th weight win: 5  tie: 0
+40-th weight with mcts [100] win: 5  Random mcts [1600] win: 5  tie: 0
+41-th weight win: 2  38-th weight win: 8  tie: 0
+41-th weight with mcts [100] win: 4  Random mcts [1600] win: 6  tie: 0
+42-th weight win: 3  38-th weight win: 7  tie: 0
+42-th weight with mcts [100] win: 4  Random mcts [1600] win: 6  tie: 0
+43-th weight win: 0  38-th weight win: 10  tie: 0
+43-th weight with mcts [100] win: 3  Random mcts [1600] win: 7  tie: 0
+44-th weight win: 7  38-th weight win: 3  tie: 0
+new best weight: 44 generated!!!!
+44-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+45-th weight win: 10  44-th weight win: 0  tie: 0
+new best weight: 45 generated!!!!
+45-th weight with mcts [100] win: 1  Random mcts [1600] win: 9  tie: 0
+46-th weight win: 5  45-th weight win: 5  tie: 0
+46-th weight with mcts [100] win: 7  Random mcts [1600] win: 3  tie: 0
+47-th weight win: 5  45-th weight win: 5  tie: 0
+47-th weight with mcts [100] win: 7  Random mcts [1600] win: 3  tie: 0
+48-th weight win: 9  45-th weight win: 1  tie: 0
+new best weight: 48 generated!!!!
+48-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+49-th weight win: 8  48-th weight win: 2  tie: 0
+new best weight: 49 generated!!!!
+49-th weight with mcts [100] win: 9  Random mcts [1600] win: 1  tie: 0
+50-th weight win: 5  49-th weight win: 5  tie: 0
+50-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+51-th weight win: 10  49-th weight win: 0  tie: 0
+new best weight: 51 generated!!!!
+51-th weight with mcts [100] win: 3  Random mcts [1600] win: 7  tie: 0
+52-th weight win: 7  51-th weight win: 3  tie: 0
+new best weight: 52 generated!!!!
+52-th weight with mcts [100] win: 6  Random mcts [1600] win: 4  tie: 0
+53-th weight win: 3  52-th weight win: 7  tie: 0
+53-th weight with mcts [100] win: 10  Random mcts [1600] win: 0  tie: 0
+add random mcts number to: 1700
+54-th weight win: 7  52-th weight win: 3  tie: 0
+new best weight: 54 generated!!!!
+54-th weight with mcts [100] win: 10  Random mcts [1700] win: 0  tie: 0
+add random mcts number to: 1800
+55-th weight win: 2  54-th weight win: 8  tie: 0
+55-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+56-th weight win: 0  54-th weight win: 10  tie: 0
+56-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+57-th weight win: 0  54-th weight win: 10  tie: 0
+57-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+58-th weight win: 5  54-th weight win: 5  tie: 0
+58-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+59-th weight win: 9  54-th weight win: 1  tie: 0
+new best weight: 59 generated!!!!
+59-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+60-th weight win: 1  59-th weight win: 9  tie: 0
+60-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+61-th weight win: 6  59-th weight win: 4  tie: 0
+new best weight: 61 generated!!!!
+61-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+62-th weight win: 3  61-th weight win: 7  tie: 0
+62-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+63-th weight win: 0  61-th weight win: 10  tie: 0
+63-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+64-th weight win: 9  61-th weight win: 1  tie: 0
+new best weight: 64 generated!!!!
+64-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+65-th weight win: 0  64-th weight win: 10  tie: 0
+65-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+66-th weight win: 10  64-th weight win: 0  tie: 0
+new best weight: 66 generated!!!!
+66-th weight with mcts [100] win: 2  Random mcts [1800] win: 8  tie: 0
+67-th weight win: 2  66-th weight win: 8  tie: 0
+67-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+68-th weight win: 0  66-th weight win: 10  tie: 0
+68-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+69-th weight win: 0  66-th weight win: 10  tie: 0
+69-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+70-th weight win: 0  66-th weight win: 10  tie: 0
+70-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+71-th weight win: 0  66-th weight win: 10  tie: 0
+71-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+72-th weight win: 1  66-th weight win: 9  tie: 0
+72-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+73-th weight win: 0  66-th weight win: 10  tie: 0
+73-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+74-th weight win: 0  66-th weight win: 10  tie: 0
+74-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+75-th weight win: 0  66-th weight win: 10  tie: 0
+75-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+76-th weight win: 0  66-th weight win: 10  tie: 0
+76-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+77-th weight win: 7  66-th weight win: 3  tie: 0
+new best weight: 77 generated!!!!
+77-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+78-th weight win: 0  77-th weight win: 10  tie: 0
+78-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+79-th weight win: 0  77-th weight win: 10  tie: 0
+79-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+80-th weight win: 7  77-th weight win: 3  tie: 0
+new best weight: 80 generated!!!!
+80-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+81-th weight win: 8  80-th weight win: 2  tie: 0
+new best weight: 81 generated!!!!
+81-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+82-th weight win: 0  81-th weight win: 10  tie: 0
+82-th weight with mcts [100] win: 2  Random mcts [1800] win: 8  tie: 0
+83-th weight win: 0  81-th weight win: 10  tie: 0
+83-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+84-th weight win: 0  81-th weight win: 10  tie: 0
+84-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+85-th weight win: 0  81-th weight win: 10  tie: 0
+85-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+86-th weight win: 0  81-th weight win: 10  tie: 0
+86-th weight with mcts [100] win: 1  Random mcts [1800] win: 9  tie: 0
+87-th weight win: 0  81-th weight win: 10  tie: 0
+87-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+88-th weight win: 0  81-th weight win: 10  tie: 0
+88-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+89-th weight win: 0  81-th weight win: 10  tie: 0
+89-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+90-th weight win: 0  81-th weight win: 10  tie: 0
+90-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+91-th weight win: 0  81-th weight win: 10  tie: 0
+91-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+92-th weight win: 6  81-th weight win: 4  tie: 0
+new best weight: 92 generated!!!!
+92-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+93-th weight win: 5  92-th weight win: 5  tie: 0
+93-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+94-th weight win: 0  92-th weight win: 10  tie: 0
+94-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+95-th weight win: 8  92-th weight win: 2  tie: 0
+new best weight: 95 generated!!!!
+95-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+96-th weight win: 4  95-th weight win: 6  tie: 0
+96-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+97-th weight win: 10  95-th weight win: 0  tie: 0
+new best weight: 97 generated!!!!
+97-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+98-th weight win: 1  97-th weight win: 9  tie: 0
+98-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+99-th weight win: 0  97-th weight win: 10  tie: 0
+99-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+100-th weight win: 9  97-th weight win: 1  tie: 0
+new best weight: 100 generated!!!!
+100-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+101-th weight win: 10  100-th weight win: 0  tie: 0
+new best weight: 101 generated!!!!
+101-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+102-th weight win: 0  101-th weight win: 10  tie: 0
+102-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+103-th weight win: 0  101-th weight win: 10  tie: 0
+103-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+104-th weight win: 0  101-th weight win: 10  tie: 0
+104-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+105-th weight win: 0  101-th weight win: 10  tie: 0
+105-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+106-th weight win: 1  101-th weight win: 9  tie: 0
+106-th weight with mcts [100] win: 1  Random mcts [1800] win: 9  tie: 0
+107-th weight win: 0  101-th weight win: 10  tie: 0
+107-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+108-th weight win: 0  101-th weight win: 10  tie: 0
+108-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+109-th weight win: 0  101-th weight win: 10  tie: 0
+109-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+110-th weight win: 8  101-th weight win: 2  tie: 0
+new best weight: 110 generated!!!!
+110-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+111-th weight win: 3  110-th weight win: 7  tie: 0
+111-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+112-th weight win: 8  110-th weight win: 2  tie: 0
+new best weight: 112 generated!!!!
+112-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+113-th weight win: 0  112-th weight win: 10  tie: 0
+113-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+114-th weight win: 1  112-th weight win: 9  tie: 0
+114-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+115-th weight win: 1  112-th weight win: 9  tie: 0
+115-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+116-th weight win: 0  112-th weight win: 10  tie: 0
+116-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+117-th weight win: 1  112-th weight win: 9  tie: 0
+117-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+118-th weight win: 8  112-th weight win: 2  tie: 0
+new best weight: 118 generated!!!!
+118-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+119-th weight win: 3  118-th weight win: 7  tie: 0
+119-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+120-th weight win: 0  118-th weight win: 10  tie: 0
+120-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+121-th weight win: 5  118-th weight win: 5  tie: 0
+121-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+122-th weight win: 8  118-th weight win: 2  tie: 0
+new best weight: 122 generated!!!!
+122-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+123-th weight win: 10  122-th weight win: 0  tie: 0
+new best weight: 123 generated!!!!
+123-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+124-th weight win: 0  123-th weight win: 10  tie: 0
+124-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+125-th weight win: 0  123-th weight win: 10  tie: 0
+125-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+126-th weight win: 5  123-th weight win: 5  tie: 0
+126-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+127-th weight win: 0  123-th weight win: 10  tie: 0
+127-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+128-th weight win: 0  123-th weight win: 10  tie: 0
+128-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+129-th weight win: 0  123-th weight win: 10  tie: 0
+129-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+130-th weight win: 0  123-th weight win: 10  tie: 0
+130-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+131-th weight win: 10  123-th weight win: 0  tie: 0
+new best weight: 131 generated!!!!
+131-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+132-th weight win: 0  131-th weight win: 10  tie: 0
+132-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+133-th weight win: 9  131-th weight win: 1  tie: 0
+new best weight: 133 generated!!!!
+133-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+134-th weight win: 0  133-th weight win: 10  tie: 0
+134-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+135-th weight win: 8  133-th weight win: 2  tie: 0
+new best weight: 135 generated!!!!
+135-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+136-th weight win: 0  135-th weight win: 10  tie: 0
+136-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+137-th weight win: 9  135-th weight win: 1  tie: 0
+new best weight: 137 generated!!!!
+137-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+138-th weight win: 0  137-th weight win: 10  tie: 0
+138-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+139-th weight win: 10  137-th weight win: 0  tie: 0
+new best weight: 139 generated!!!!
+139-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+140-th weight win: 10  139-th weight win: 0  tie: 0
+new best weight: 140 generated!!!!
+140-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+141-th weight win: 10  140-th weight win: 0  tie: 0
+new best weight: 141 generated!!!!
+141-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+142-th weight win: 4  141-th weight win: 6  tie: 0
+142-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+143-th weight win: 0  141-th weight win: 10  tie: 0
+143-th weight with mcts [100] win: 2  Random mcts [1800] win: 8  tie: 0
+144-th weight win: 0  141-th weight win: 10  tie: 0
+144-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+145-th weight win: 0  141-th weight win: 10  tie: 0
+145-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+146-th weight win: 2  141-th weight win: 8  tie: 0
+146-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+147-th weight win: 2  141-th weight win: 8  tie: 0
+147-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+148-th weight win: 0  141-th weight win: 10  tie: 0
+148-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+149-th weight win: 1  141-th weight win: 9  tie: 0
+149-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+150-th weight win: 0  141-th weight win: 10  tie: 0
+150-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+151-th weight win: 1  141-th weight win: 9  tie: 0
+151-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+152-th weight win: 0  141-th weight win: 10  tie: 0
+152-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+153-th weight win: 1  141-th weight win: 9  tie: 0
+153-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+154-th weight win: 0  141-th weight win: 10  tie: 0
+154-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+155-th weight win: 0  141-th weight win: 10  tie: 0
+155-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+156-th weight win: 1  141-th weight win: 9  tie: 0
+156-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+157-th weight win: 9  141-th weight win: 1  tie: 0
+new best weight: 157 generated!!!!
+157-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+158-th weight win: 9  157-th weight win: 1  tie: 0
+new best weight: 158 generated!!!!
+158-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+159-th weight win: 9  158-th weight win: 1  tie: 0
+new best weight: 159 generated!!!!
+159-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+160-th weight win: 0  159-th weight win: 9  tie: 1
+160-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+161-th weight win: 1  159-th weight win: 9  tie: 0
+161-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+162-th weight win: 10  159-th weight win: 0  tie: 0
+new best weight: 162 generated!!!!
+162-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+163-th weight win: 0  162-th weight win: 10  tie: 0
+163-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+164-th weight win: 0  162-th weight win: 10  tie: 0
+164-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+165-th weight win: 0  162-th weight win: 10  tie: 0
+165-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+166-th weight win: 0  162-th weight win: 10  tie: 0
+166-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+167-th weight win: 0  162-th weight win: 10  tie: 0
+167-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+168-th weight win: 0  162-th weight win: 10  tie: 0
+168-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+169-th weight win: 0  162-th weight win: 10  tie: 0
+169-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+170-th weight win: 0  162-th weight win: 10  tie: 0
+170-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+171-th weight win: 0  162-th weight win: 10  tie: 0
+171-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+172-th weight win: 0  162-th weight win: 10  tie: 0
+172-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+173-th weight win: 8  162-th weight win: 2  tie: 0
+new best weight: 173 generated!!!!
+173-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+174-th weight win: 2  173-th weight win: 8  tie: 0
+174-th weight with mcts [100] win: 9  Random mcts [1800] win: 1  tie: 0
+175-th weight win: 8  173-th weight win: 2  tie: 0
+new best weight: 175 generated!!!!
+175-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+176-th weight win: 10  175-th weight win: 0  tie: 0
+new best weight: 176 generated!!!!
+176-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+177-th weight win: 0  176-th weight win: 10  tie: 0
+177-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+178-th weight win: 9  176-th weight win: 1  tie: 0
+new best weight: 178 generated!!!!
+178-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+179-th weight win: 3  178-th weight win: 7  tie: 0
+179-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+180-th weight win: 3  178-th weight win: 7  tie: 0
+180-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+181-th weight win: 5  178-th weight win: 5  tie: 0
+181-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+182-th weight win: 10  178-th weight win: 0  tie: 0
+new best weight: 182 generated!!!!
+182-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+183-th weight win: 6  182-th weight win: 4  tie: 0
+new best weight: 183 generated!!!!
+183-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+184-th weight win: 2  183-th weight win: 8  tie: 0
+184-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+185-th weight win: 1  183-th weight win: 9  tie: 0
+185-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+186-th weight win: 1  183-th weight win: 9  tie: 0
+186-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+187-th weight win: 0  183-th weight win: 10  tie: 0
+187-th weight with mcts [100] win: 2  Random mcts [1800] win: 8  tie: 0
+188-th weight win: 0  183-th weight win: 10  tie: 0
+188-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+189-th weight win: 2  183-th weight win: 8  tie: 0
+189-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+190-th weight win: 2  183-th weight win: 8  tie: 0
+190-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+191-th weight win: 6  183-th weight win: 2  tie: 2
+new best weight: 191 generated!!!!
+191-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+192-th weight win: 0  191-th weight win: 10  tie: 0
+192-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+193-th weight win: 0  191-th weight win: 10  tie: 0
+193-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+194-th weight win: 0  191-th weight win: 10  tie: 0
+194-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+195-th weight win: 0  191-th weight win: 10  tie: 0
+195-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+196-th weight win: 3  191-th weight win: 7  tie: 0
+196-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+197-th weight win: 3  191-th weight win: 7  tie: 0
+197-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+198-th weight win: 0  191-th weight win: 10  tie: 0
+198-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+199-th weight win: 7  191-th weight win: 3  tie: 0
+new best weight: 199 generated!!!!
+199-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+200-th weight win: 10  199-th weight win: 0  tie: 0
+new best weight: 200 generated!!!!
+201-th weight win: 3  200-th weight win: 7  tie: 0
+201-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+202-th weight win: 7  200-th weight win: 3  tie: 0
+new best weight: 202 generated!!!!
+202-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+203-th weight win: 1  202-th weight win: 9  tie: 0
+203-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+204-th weight win: 0  202-th weight win: 10  tie: 0
+204-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+205-th weight win: 1  202-th weight win: 9  tie: 0
+205-th weight with mcts [100] win: 4  Random mcts [1800] win: 6  tie: 0
+206-th weight win: 0  202-th weight win: 10  tie: 0
+206-th weight with mcts [100] win: 7  Random mcts [1800] win: 3  tie: 0
+207-th weight win: 2  202-th weight win: 8  tie: 0
+207-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+208-th weight win: 1  202-th weight win: 9  tie: 0
+208-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+209-th weight win: 0  202-th weight win: 10  tie: 0
+209-th weight with mcts [100] win: 3  Random mcts [1800] win: 7  tie: 0
+210-th weight win: 0  202-th weight win: 10  tie: 0
+210-th weight with mcts [100] win: 6  Random mcts [1800] win: 4  tie: 0
+211-th weight win: 5  202-th weight win: 5  tie: 0
+211-th weight with mcts [100] win: 8  Random mcts [1800] win: 2  tie: 0
+212-th weight win: 5  202-th weight win: 5  tie: 0
+212-th weight with mcts [100] win: 5  Random mcts [1800] win: 5  tie: 0
+213-th weight win: 2  202-th weight win: 8  tie: 0
+213-th weight with mcts [100] win: 10  Random mcts [1800] win: 0  tie: 0
+add random mcts number to: 1900
+214-th weight win: 1  202-th weight win: 9  tie: 0
+214-th weight with mcts [100] win: 9  Random mcts [1900] win: 1  tie: 0
+215-th weight win: 1  202-th weight win: 9  tie: 0
+215-th weight with mcts [100] win: 10  Random mcts [1900] win: 0  tie: 0
+add random mcts number to: 2000
+216-th weight win: 2  202-th weight win: 8  tie: 0
+216-th weight with mcts [100] win: 10  Random mcts [2000] win: 0  tie: 0
+add random mcts number to: 2100
+217-th weight win: 1  202-th weight win: 9  tie: 0
+217-th weight with mcts [100] win: 10  Random mcts [2100] win: 0  tie: 0
+add random mcts number to: 2200
+218-th weight win: 0  202-th weight win: 10  tie: 0
+218-th weight with mcts [100] win: 9  Random mcts [2200] win: 1  tie: 0
+219-th weight win: 1  202-th weight win: 9  tie: 0
+219-th weight with mcts [100] win: 10  Random mcts [2200] win: 0  tie: 0
+add random mcts number to: 2300
+220-th weight win: 7  202-th weight win: 3  tie: 0
+new best weight: 220 generated!!!!
+220-th weight with mcts [100] win: 10  Random mcts [2300] win: 0  tie: 0
+add random mcts number to: 2400
+221-th weight win: 0  220-th weight win: 10  tie: 0
+221-th weight with mcts [100] win: 10  Random mcts [2400] win: 0  tie: 0
+add random mcts number to: 2500
+222-th weight win: 0  220-th weight win: 10  tie: 0
+222-th weight with mcts [100] win: 8  Random mcts [2500] win: 2  tie: 0
+223-th weight win: 2  220-th weight win: 8  tie: 0
+223-th weight with mcts [100] win: 10  Random mcts [2500] win: 0  tie: 0
+add random mcts number to: 2600
+224-th weight win: 3  220-th weight win: 7  tie: 0
+224-th weight with mcts [100] win: 10  Random mcts [2600] win: 0  tie: 0
+add random mcts number to: 2700
+225-th weight win: 1  220-th weight win: 9  tie: 0
+225-th weight with mcts [100] win: 10  Random mcts [2700] win: 0  tie: 0
+add random mcts number to: 2800
+226-th weight win: 10  220-th weight win: 0  tie: 0
+new best weight: 226 generated!!!!
+226-th weight with mcts [100] win: 10  Random mcts [2800] win: 0  tie: 0
+add random mcts number to: 2900
+227-th weight win: 0  226-th weight win: 10  tie: 0
+227-th weight with mcts [100] win: 8  Random mcts [2900] win: 2  tie: 0
+228-th weight win: 0  226-th weight win: 10  tie: 0
+228-th weight with mcts [100] win: 10  Random mcts [2900] win: 0  tie: 0
+add random mcts number to: 3000
+229-th weight win: 0  226-th weight win: 10  tie: 0
+229-th weight with mcts [100] win: 10  Random mcts [3000] win: 0  tie: 0
+add random mcts number to: 3100
+230-th weight win: 8  226-th weight win: 2  tie: 0
+new best weight: 230 generated!!!!
+230-th weight with mcts [100] win: 10  Random mcts [3100] win: 0  tie: 0
+add random mcts number to: 3200
+231-th weight win: 0  230-th weight win: 10  tie: 0
+231-th weight with mcts [100] win: 9  Random mcts [3200] win: 1  tie: 0
+232-th weight win: 0  230-th weight win: 10  tie: 0
+232-th weight with mcts [100] win: 9  Random mcts [3200] win: 1  tie: 0
+233-th weight win: 0  230-th weight win: 10  tie: 0
+233-th weight with mcts [100] win: 8  Random mcts [3200] win: 2  tie: 0
+234-th weight win: 3  230-th weight win: 7  tie: 0
+234-th weight with mcts [100] win: 9  Random mcts [3200] win: 1  tie: 0
+235-th weight win: 0  230-th weight win: 10  tie: 0
+235-th weight with mcts [100] win: 10  Random mcts [3200] win: 0  tie: 0
+add random mcts number to: 3300
+236-th weight win: 7  230-th weight win: 3  tie: 0
+new best weight: 236 generated!!!!
+236-th weight with mcts [100] win: 9  Random mcts [3300] win: 1  tie: 0
+237-th weight win: 0  236-th weight win: 10  tie: 0
+237-th weight with mcts [100] win: 8  Random mcts [3300] win: 2  tie: 0
+238-th weight win: 3  236-th weight win: 7  tie: 0
+238-th weight with mcts [100] win: 10  Random mcts [3300] win: 0  tie: 0
+add random mcts number to: 3400
+239-th weight win: 4  236-th weight win: 6  tie: 0
+239-th weight with mcts [100] win: 10  Random mcts [3400] win: 0  tie: 0
+add random mcts number to: 3500
+240-th weight win: 0  236-th weight win: 10  tie: 0
+240-th weight with mcts [100] win: 10  Random mcts [3500] win: 0  tie: 0
+add random mcts number to: 3600
+241-th weight win: 2  236-th weight win: 8  tie: 0
+241-th weight with mcts [100] win: 9  Random mcts [3600] win: 1  tie: 0
+242-th weight win: 10  236-th weight win: 0  tie: 0
+new best weight: 242 generated!!!!
+242-th weight with mcts [100] win: 10  Random mcts [3600] win: 0  tie: 0
+add random mcts number to: 3700
+243-th weight win: 1  242-th weight win: 9  tie: 0
+243-th weight with mcts [100] win: 10  Random mcts [3700] win: 0  tie: 0
+add random mcts number to: 3800
+244-th weight win: 4  242-th weight win: 6  tie: 0
+244-th weight with mcts [100] win: 5  Random mcts [3800] win: 5  tie: 0
+245-th weight win: 0  242-th weight win: 10  tie: 0
+245-th weight with mcts [100] win: 8  Random mcts [3800] win: 2  tie: 0
+246-th weight win: 0  242-th weight win: 10  tie: 0
+246-th weight with mcts [100] win: 8  Random mcts [3800] win: 2  tie: 0
+247-th weight win: 0  242-th weight win: 10  tie: 0
+247-th weight with mcts [100] win: 9  Random mcts [3800] win: 1  tie: 0
+248-th weight win: 0  242-th weight win: 10  tie: 0
+248-th weight with mcts [100] win: 6  Random mcts [3800] win: 4  tie: 0
+249-th weight win: 0  242-th weight win: 10  tie: 0
+249-th weight with mcts [100] win: 7  Random mcts [3800] win: 3  tie: 0
+250-th weight win: 0  242-th weight win: 10  tie: 0
+250-th weight with mcts [100] win: 4  Random mcts [3800] win: 6  tie: 0
+251-th weight win: 4  242-th weight win: 6  tie: 0
+251-th weight with mcts [100] win: 6  Random mcts [3800] win: 4  tie: 0
+252-th weight win: 9  242-th weight win: 1  tie: 0
+new best weight: 252 generated!!!!
+252-th weight with mcts [100] win: 6  Random mcts [3800] win: 4  tie: 0
+253-th weight win: 5  252-th weight win: 5  tie: 0
+253-th weight with mcts [100] win: 10  Random mcts [3800] win: 0  tie: 0
+add random mcts number to: 3900
+254-th weight win: 0  252-th weight win: 10  tie: 0
+254-th weight with mcts [100] win: 10  Random mcts [3900] win: 0  tie: 0
+add random mcts number to: 4000
+255-th weight win: 1  252-th weight win: 9  tie: 0
+255-th weight with mcts [100] win: 9  Random mcts [4000] win: 1  tie: 0
+256-th weight win: 6  252-th weight win: 4  tie: 0
+new best weight: 256 generated!!!!
+256-th weight with mcts [100] win: 9  Random mcts [4000] win: 1  tie: 0
+257-th weight win: 0  256-th weight win: 10  tie: 0
+257-th weight with mcts [100] win: 9  Random mcts [4000] win: 1  tie: 0
+258-th weight win: 1  256-th weight win: 9  tie: 0
+258-th weight with mcts [100] win: 7  Random mcts [4000] win: 3  tie: 0
+259-th weight win: 0  256-th weight win: 10  tie: 0
+259-th weight with mcts [100] win: 10  Random mcts [4000] win: 0  tie: 0
+add random mcts number to: 4100
+260-th weight win: 0  256-th weight win: 10  tie: 0
+260-th weight with mcts [100] win: 9  Random mcts [4100] win: 1  tie: 0
+261-th weight win: 0  256-th weight win: 10  tie: 0
+261-th weight with mcts [100] win: 7  Random mcts [4100] win: 3  tie: 0
+262-th weight win: 0  256-th weight win: 10  tie: 0
+262-th weight with mcts [100] win: 5  Random mcts [4100] win: 5  tie: 0
+263-th weight win: 0  256-th weight win: 10  tie: 0
+263-th weight with mcts [100] win: 7  Random mcts [4100] win: 3  tie: 0
+264-th weight win: 10  256-th weight win: 0  tie: 0
+new best weight: 264 generated!!!!
+264-th weight with mcts [100] win: 9  Random mcts [4100] win: 1  tie: 0
+265-th weight win: 3  264-th weight win: 7  tie: 0
+265-th weight with mcts [100] win: 10  Random mcts [4100] win: 0  tie: 0
+add random mcts number to: 4200
+266-th weight win: 1  264-th weight win: 9  tie: 0
+266-th weight with mcts [100] win: 9  Random mcts [4200] win: 1  tie: 0
+267-th weight win: 0  264-th weight win: 10  tie: 0
+267-th weight with mcts [100] win: 8  Random mcts [4200] win: 2  tie: 0
+268-th weight win: 1  264-th weight win: 9  tie: 0
+268-th weight with mcts [100] win: 10  Random mcts [4200] win: 0  tie: 0
+add random mcts number to: 4300
+269-th weight win: 0  264-th weight win: 10  tie: 0
+269-th weight with mcts [100] win: 10  Random mcts [4300] win: 0  tie: 0
+add random mcts number to: 4400
+270-th weight win: 9  264-th weight win: 1  tie: 0
+new best weight: 270 generated!!!!
+270-th weight with mcts [100] win: 8  Random mcts [4400] win: 2  tie: 0
+271-th weight win: 0  270-th weight win: 10  tie: 0
+271-th weight with mcts [100] win: 10  Random mcts [4400] win: 0  tie: 0
+add random mcts number to: 4500
+272-th weight win: 5  270-th weight win: 5  tie: 0
+272-th weight with mcts [100] win: 10  Random mcts [4500] win: 0  tie: 0
+add random mcts number to: 4600
+273-th weight win: 5  270-th weight win: 5  tie: 0
+273-th weight with mcts [100] win: 8  Random mcts [4600] win: 2  tie: 0
+274-th weight win: 9  270-th weight win: 1  tie: 0
+new best weight: 274 generated!!!!
+274-th weight with mcts [100] win: 10  Random mcts [4600] win: 0  tie: 0
+add random mcts number to: 4700
+275-th weight win: 0  274-th weight win: 10  tie: 0
+275-th weight with mcts [100] win: 9  Random mcts [4700] win: 1  tie: 0
+276-th weight win: 0  274-th weight win: 10  tie: 0
+276-th weight with mcts [100] win: 8  Random mcts [4700] win: 2  tie: 0
+277-th weight win: 0  274-th weight win: 10  tie: 0
+277-th weight with mcts [100] win: 7  Random mcts [4700] win: 3  tie: 0
+278-th weight win: 3  274-th weight win: 7  tie: 0
+278-th weight with mcts [100] win: 9  Random mcts [4700] win: 1  tie: 0
+279-th weight win: 3  274-th weight win: 7  tie: 0
+279-th weight with mcts [100] win: 9  Random mcts [4700] win: 1  tie: 0
+280-th weight win: 7  274-th weight win: 3  tie: 0
+new best weight: 280 generated!!!!
+280-th weight with mcts [100] win: 8  Random mcts [4700] win: 2  tie: 0
+281-th weight win: 10  280-th weight win: 0  tie: 0
+new best weight: 281 generated!!!!
+281-th weight with mcts [100] win: 7  Random mcts [4700] win: 3  tie: 0
+282-th weight win: 5  281-th weight win: 5  tie: 0
+282-th weight with mcts [100] win: 5  Random mcts [4700] win: 5  tie: 0
+283-th weight win: 0  281-th weight win: 10  tie: 0
+283-th weight with mcts [100] win: 7  Random mcts [4700] win: 3  tie: 0
+284-th weight win: 0  281-th weight win: 10  tie: 0
+284-th weight with mcts [100] win: 6  Random mcts [4700] win: 4  tie: 0
+285-th weight win: 10  281-th weight win: 0  tie: 0
+new best weight: 285 generated!!!!
+285-th weight with mcts [100] win: 9  Random mcts [4700] win: 1  tie: 0
+286-th weight win: 2  285-th weight win: 8  tie: 0
+286-th weight with mcts [100] win: 9  Random mcts [4700] win: 1  tie: 0
+287-th weight win: 6  285-th weight win: 4  tie: 0
+new best weight: 287 generated!!!!
+287-th weight with mcts [100] win: 9  Random mcts [4700] win: 1  tie: 0
+288-th weight win: 0  287-th weight win: 10  tie: 0
+288-th weight with mcts [100] win: 8  Random mcts [4700] win: 2  tie: 0
+289-th weight win: 0  287-th weight win: 10  tie: 0
+289-th weight with mcts [100] win: 9  Random mcts [4700] win: 1  tie: 0
+290-th weight win: 4  287-th weight win: 6  tie: 0
+290-th weight with mcts [100] win: 10  Random mcts [4700] win: 0  tie: 0
+add random mcts number to: 4800
+291-th weight win: 0  287-th weight win: 10  tie: 0
+291-th weight with mcts [100] win: 9  Random mcts [4800] win: 1  tie: 0
+292-th weight win: 10  287-th weight win: 0  tie: 0
+new best weight: 292 generated!!!!
+292-th weight with mcts [100] win: 10  Random mcts [4800] win: 0  tie: 0
+add random mcts number to: 4900
+293-th weight win: 3  292-th weight win: 7  tie: 0
+293-th weight with mcts [100] win: 10  Random mcts [4900] win: 0  tie: 0
+add random mcts number to: 5000
+294-th weight win: 0  292-th weight win: 10  tie: 0
+294-th weight with mcts [100] win: 10  Random mcts [5000] win: 0  tie: 0
+add random mcts number to: 5100
+295-th weight win: 0  292-th weight win: 10  tie: 0
+295-th weight with mcts [100] win: 8  Random mcts [5100] win: 2  tie: 0
+296-th weight win: 10  292-th weight win: 0  tie: 0
+new best weight: 296 generated!!!!
+296-th weight with mcts [100] win: 8  Random mcts [5100] win: 2  tie: 0
+297-th weight win: 1  296-th weight win: 9  tie: 0
+297-th weight with mcts [100] win: 9  Random mcts [5100] win: 1  tie: 0
+298-th weight win: 1  296-th weight win: 9  tie: 0
+298-th weight with mcts [100] win: 10  Random mcts [5100] win: 0  tie: 0
+add random mcts number to: 5200
+299-th weight win: 0  296-th weight win: 10  tie: 0
+299-th weight with mcts [100] win: 10  Random mcts [5200] win: 0  tie: 0
+add random mcts number to: 5300
+300-th weight win: 0  296-th weight win: 10  tie: 0
+300-th weight with mcts [100] win: 9  Random mcts [5300] win: 1  tie: 0
+301-th weight win: 0  296-th weight win: 10  tie: 0
+301-th weight with mcts [100] win: 10  Random mcts [5300] win: 0  tie: 0
+add random mcts number to: 5400
+302-th weight win: 0  296-th weight win: 10  tie: 0
+302-th weight with mcts [100] win: 10  Random mcts [5400] win: 0  tie: 0
+add random mcts number to: 5500
+303-th weight win: 0  296-th weight win: 10  tie: 0
+303-th weight with mcts [100] win: 6  Random mcts [5500] win: 4  tie: 0
+304-th weight win: 0  296-th weight win: 10  tie: 0
+304-th weight with mcts [100] win: 10  Random mcts [5500] win: 0  tie: 0
+add random mcts number to: 5600
+305-th weight win: 0  296-th weight win: 10  tie: 0
+305-th weight with mcts [100] win: 9  Random mcts [5600] win: 1  tie: 0
+306-th weight win: 0  296-th weight win: 10  tie: 0
+306-th weight with mcts [100] win: 10  Random mcts [5600] win: 0  tie: 0
+add random mcts number to: 5700
+307-th weight win: 1  296-th weight win: 9  tie: 0
+307-th weight with mcts [100] win: 9  Random mcts [5700] win: 1  tie: 0
+308-th weight win: 0  296-th weight win: 10  tie: 0
+308-th weight with mcts [100] win: 9  Random mcts [5700] win: 1  tie: 0
+309-th weight win: 0  296-th weight win: 10  tie: 0
+309-th weight with mcts [100] win: 8  Random mcts [5700] win: 2  tie: 0
+310-th weight win: 0  296-th weight win: 10  tie: 0
+310-th weight with mcts [100] win: 8  Random mcts [5700] win: 2  tie: 0
+311-th weight win: 2  296-th weight win: 8  tie: 0
+311-th weight with mcts [100] win: 10  Random mcts [5700] win: 0  tie: 0
+add random mcts number to: 5800
+312-th weight win: 0  296-th weight win: 10  tie: 0
+312-th weight with mcts [100] win: 9  Random mcts [5800] win: 1  tie: 0
+313-th weight win: 7  296-th weight win: 3  tie: 0
+new best weight: 313 generated!!!!
+313-th weight with mcts [100] win: 9  Random mcts [5800] win: 1  tie: 0
+314-th weight win: 0  313-th weight win: 10  tie: 0
+314-th weight with mcts [100] win: 9  Random mcts [5800] win: 1  tie: 0
+315-th weight win: 10  313-th weight win: 0  tie: 0
+new best weight: 315 generated!!!!
+315-th weight with mcts [100] win: 8  Random mcts [5800] win: 2  tie: 0
+316-th weight win: 0  315-th weight win: 10  tie: 0
+316-th weight with mcts [100] win: 9  Random mcts [5800] win: 1  tie: 0
+317-th weight win: 0  315-th weight win: 10  tie: 0
+317-th weight with mcts [100] win: 10  Random mcts [5800] win: 0  tie: 0
+add random mcts number to: 5900
+318-th weight win: 9  315-th weight win: 1  tie: 0
+new best weight: 318 generated!!!!
+318-th weight with mcts [100] win: 8  Random mcts [5900] win: 2  tie: 0
+319-th weight win: 0  318-th weight win: 10  tie: 0
+319-th weight with mcts [100] win: 8  Random mcts [5900] win: 2  tie: 0
+320-th weight win: 5  318-th weight win: 5  tie: 0
+320-th weight with mcts [100] win: 10  Random mcts [5900] win: 0  tie: 0
+add random mcts number to: 6000
+321-th weight win: 0  318-th weight win: 10  tie: 0
+321-th weight with mcts [100] win: 10  Random mcts [6000] win: 0  tie: 0
+add random mcts number to: 6100
+322-th weight win: 1  318-th weight win: 9  tie: 0
+322-th weight with mcts [100] win: 10  Random mcts [6100] win: 0  tie: 0
+add random mcts number to: 6200
+323-th weight win: 0  318-th weight win: 10  tie: 0
+323-th weight with mcts [100] win: 9  Random mcts [6200] win: 1  tie: 0
+324-th weight win: 9  318-th weight win: 1  tie: 0
+new best weight: 324 generated!!!!
+324-th weight with mcts [100] win: 9  Random mcts [6200] win: 1  tie: 0
+325-th weight win: 5  324-th weight win: 5  tie: 0
+325-th weight with mcts [100] win: 10  Random mcts [6200] win: 0  tie: 0
+add random mcts number to: 6300
+326-th weight win: 7  324-th weight win: 3  tie: 0
+new best weight: 326 generated!!!!
+326-th weight with mcts [100] win: 9  Random mcts [6300] win: 1  tie: 0
+327-th weight win: 0  326-th weight win: 10  tie: 0
+327-th weight with mcts [100] win: 9  Random mcts [6300] win: 1  tie: 0
+328-th weight win: 8  326-th weight win: 2  tie: 0
+new best weight: 328 generated!!!!
+328-th weight with mcts [100] win: 9  Random mcts [6300] win: 1  tie: 0
+329-th weight win: 7  328-th weight win: 3  tie: 0
+new best weight: 329 generated!!!!
+329-th weight with mcts [100] win: 10  Random mcts [6300] win: 0  tie: 0
+add random mcts number to: 6400
+330-th weight win: 0  329-th weight win: 10  tie: 0
+330-th weight with mcts [100] win: 10  Random mcts [6400] win: 0  tie: 0
+add random mcts number to: 6500
+331-th weight win: 0  329-th weight win: 10  tie: 0
+331-th weight with mcts [100] win: 9  Random mcts [6500] win: 1  tie: 0
+332-th weight win: 0  329-th weight win: 10  tie: 0
+332-th weight with mcts [100] win: 10  Random mcts [6500] win: 0  tie: 0
+add random mcts number to: 6600
+333-th weight win: 0  329-th weight win: 10  tie: 0
+333-th weight with mcts [100] win: 10  Random mcts [6600] win: 0  tie: 0
+add random mcts number to: 6700
+334-th weight win: 0  329-th weight win: 10  tie: 0
+334-th weight with mcts [100] win: 10  Random mcts [6700] win: 0  tie: 0
+add random mcts number to: 6800
+335-th weight win: 0  329-th weight win: 10  tie: 0
+335-th weight with mcts [100] win: 9  Random mcts [6800] win: 1  tie: 0
+336-th weight win: 8  329-th weight win: 2  tie: 0
+new best weight: 336 generated!!!!
+336-th weight with mcts [100] win: 8  Random mcts [6800] win: 2  tie: 0
+337-th weight win: 0  336-th weight win: 10  tie: 0
+337-th weight with mcts [100] win: 9  Random mcts [6800] win: 1  tie: 0
+338-th weight win: 0  336-th weight win: 10  tie: 0
+338-th weight with mcts [100] win: 10  Random mcts [6800] win: 0  tie: 0
+add random mcts number to: 6900
+339-th weight win: 0  336-th weight win: 10  tie: 0
+339-th weight with mcts [100] win: 10  Random mcts [6900] win: 0  tie: 0
+add random mcts number to: 7000
+340-th weight win: 9  336-th weight win: 1  tie: 0
+new best weight: 340 generated!!!!
+340-th weight with mcts [100] win: 9  Random mcts [7000] win: 1  tie: 0
+341-th weight win: 0  340-th weight win: 10  tie: 0
+341-th weight with mcts [100] win: 10  Random mcts [7000] win: 0  tie: 0
+add random mcts number to: 7100
+342-th weight win: 0  340-th weight win: 10  tie: 0
+342-th weight with mcts [100] win: 10  Random mcts [7100] win: 0  tie: 0
+add random mcts number to: 7200
+343-th weight win: 3  340-th weight win: 7  tie: 0
+343-th weight with mcts [100] win: 10  Random mcts [7200] win: 0  tie: 0
+add random mcts number to: 7300
+344-th weight win: 6  340-th weight win: 4  tie: 0
+new best weight: 344 generated!!!!
+344-th weight with mcts [100] win: 9  Random mcts [7300] win: 1  tie: 0
+345-th weight win: 8  344-th weight win: 2  tie: 0
+new best weight: 345 generated!!!!
+345-th weight with mcts [100] win: 8  Random mcts [7300] win: 2  tie: 0
+346-th weight win: 0  345-th weight win: 10  tie: 0
+346-th weight with mcts [100] win: 10  Random mcts [7300] win: 0  tie: 0
+add random mcts number to: 7400
+347-th weight win: 0  345-th weight win: 10  tie: 0
+347-th weight with mcts [100] win: 9  Random mcts [7400] win: 1  tie: 0
+348-th weight win: 0  345-th weight win: 10  tie: 0
+348-th weight with mcts [100] win: 10  Random mcts [7400] win: 0  tie: 0
+add random mcts number to: 7500
+349-th weight win: 6  345-th weight win: 4  tie: 0
+new best weight: 349 generated!!!!
+349-th weight with mcts [100] win: 10  Random mcts [7500] win: 0  tie: 0
+add random mcts number to: 7600
+350-th weight win: 1  349-th weight win: 9  tie: 0
+350-th weight with mcts [100] win: 10  Random mcts [7600] win: 0  tie: 0
+add random mcts number to: 7700
+351-th weight win: 10  349-th weight win: 0  tie: 0
+new best weight: 351 generated!!!!
+351-th weight with mcts [100] win: 9  Random mcts [7700] win: 1  tie: 0
+352-th weight win: 0  351-th weight win: 10  tie: 0
+352-th weight with mcts [100] win: 9  Random mcts [7700] win: 1  tie: 0
+353-th weight win: 1  351-th weight win: 9  tie: 0
+353-th weight with mcts [100] win: 9  Random mcts [7700] win: 1  tie: 0
+354-th weight win: 2  351-th weight win: 8  tie: 0
+354-th weight with mcts [100] win: 9  Random mcts [7700] win: 1  tie: 0
+355-th weight win: 4  351-th weight win: 6  tie: 0
+355-th weight with mcts [100] win: 9  Random mcts [7700] win: 1  tie: 0
+356-th weight win: 0  351-th weight win: 10  tie: 0
+356-th weight with mcts [100] win: 10  Random mcts [7700] win: 0  tie: 0
+add random mcts number to: 7800
+357-th weight win: 1  351-th weight win: 9  tie: 0
+357-th weight with mcts [100] win: 10  Random mcts [7800] win: 0  tie: 0
+add random mcts number to: 7900
+358-th weight win: 1  351-th weight win: 9  tie: 0
+358-th weight with mcts [100] win: 9  Random mcts [7900] win: 1  tie: 0
+359-th weight win: 5  351-th weight win: 5  tie: 0
+359-th weight with mcts [100] win: 8  Random mcts [7900] win: 2  tie: 0
+360-th weight win: 10  351-th weight win: 0  tie: 0
+new best weight: 360 generated!!!!
+360-th weight with mcts [100] win: 10  Random mcts [7900] win: 0  tie: 0
+add random mcts number to: 8000
+361-th weight win: 0  360-th weight win: 10  tie: 0
+361-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+362-th weight win: 9  360-th weight win: 1  tie: 0
+new best weight: 362 generated!!!!
+362-th weight with mcts [100] win: 7  Random mcts [8000] win: 3  tie: 0
+363-th weight win: 2  362-th weight win: 8  tie: 0
+363-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+364-th weight win: 0  362-th weight win: 10  tie: 0
+364-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+365-th weight win: 0  362-th weight win: 10  tie: 0
+365-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+366-th weight win: 3  362-th weight win: 7  tie: 0
+366-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+367-th weight win: 0  362-th weight win: 10  tie: 0
+367-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+368-th weight win: 2  362-th weight win: 8  tie: 0
+368-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+369-th weight win: 0  362-th weight win: 10  tie: 0
+369-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+370-th weight win: 0  362-th weight win: 10  tie: 0
+370-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+371-th weight win: 0  362-th weight win: 10  tie: 0
+371-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+372-th weight win: 0  362-th weight win: 10  tie: 0
+372-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+373-th weight win: 0  362-th weight win: 10  tie: 0
+373-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+374-th weight win: 0  362-th weight win: 10  tie: 0
+374-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+375-th weight win: 4  362-th weight win: 6  tie: 0
+375-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+376-th weight win: 0  362-th weight win: 10  tie: 0
+376-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+377-th weight win: 2  362-th weight win: 8  tie: 0
+377-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+378-th weight win: 0  362-th weight win: 10  tie: 0
+378-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+379-th weight win: 0  362-th weight win: 10  tie: 0
+379-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+380-th weight win: 0  362-th weight win: 10  tie: 0
+380-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+381-th weight win: 0  362-th weight win: 10  tie: 0
+381-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+382-th weight win: 0  362-th weight win: 10  tie: 0
+382-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+383-th weight win: 0  362-th weight win: 10  tie: 0
+383-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+384-th weight win: 0  362-th weight win: 10  tie: 0
+384-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+385-th weight win: 0  362-th weight win: 10  tie: 0
+385-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+386-th weight win: 0  362-th weight win: 10  tie: 0
+386-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+387-th weight win: 0  362-th weight win: 10  tie: 0
+387-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+388-th weight win: 0  362-th weight win: 10  tie: 0
+388-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+389-th weight win: 0  362-th weight win: 10  tie: 0
+389-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+390-th weight win: 0  362-th weight win: 10  tie: 0
+390-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+391-th weight win: 0  362-th weight win: 10  tie: 0
+391-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+392-th weight win: 4  362-th weight win: 6  tie: 0
+392-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+393-th weight win: 0  362-th weight win: 10  tie: 0
+393-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+394-th weight win: 0  362-th weight win: 10  tie: 0
+394-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+395-th weight win: 0  362-th weight win: 10  tie: 0
+395-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+396-th weight win: 0  362-th weight win: 10  tie: 0
+396-th weight with mcts [100] win: 4  Random mcts [8000] win: 6  tie: 0
+397-th weight win: 0  362-th weight win: 10  tie: 0
+397-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+398-th weight win: 0  362-th weight win: 10  tie: 0
+398-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+399-th weight win: 0  362-th weight win: 10  tie: 0
+399-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+400-th weight win: 0  362-th weight win: 10  tie: 0
+400-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+401-th weight win: 0  362-th weight win: 10  tie: 0
+401-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+402-th weight win: 0  362-th weight win: 10  tie: 0
+402-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+403-th weight win: 1  362-th weight win: 9  tie: 0
+403-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+404-th weight win: 0  362-th weight win: 10  tie: 0
+404-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+405-th weight win: 0  362-th weight win: 10  tie: 0
+405-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+406-th weight win: 0  362-th weight win: 10  tie: 0
+406-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+407-th weight win: 0  362-th weight win: 10  tie: 0
+407-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+408-th weight win: 0  362-th weight win: 10  tie: 0
+408-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+409-th weight win: 0  362-th weight win: 10  tie: 0
+409-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+410-th weight win: 0  362-th weight win: 10  tie: 0
+410-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+411-th weight win: 5  362-th weight win: 5  tie: 0
+411-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+412-th weight win: 0  362-th weight win: 10  tie: 0
+412-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0
+413-th weight win: 0  362-th weight win: 10  tie: 0
+413-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+414-th weight win: 0  362-th weight win: 10  tie: 0
+414-th weight with mcts [100] win: 5  Random mcts [8000] win: 5  tie: 0
+415-th weight win: 2  362-th weight win: 8  tie: 0
+415-th weight with mcts [100] win: 7  Random mcts [8000] win: 3  tie: 0
+416-th weight win: 8  362-th weight win: 2  tie: 0
+new best weight: 416 generated!!!!
+416-th weight with mcts [100] win: 7  Random mcts [8000] win: 3  tie: 0
+417-th weight win: 4  416-th weight win: 6  tie: 0
+417-th weight with mcts [100] win: 8  Random mcts [8000] win: 2  tie: 0
+418-th weight win: 9  416-th weight win: 1  tie: 0
+new best weight: 418 generated!!!!
+418-th weight with mcts [100] win: 7  Random mcts [8000] win: 3  tie: 0
+419-th weight win: 10  418-th weight win: 0  tie: 0
+new best weight: 419 generated!!!!
+419-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+420-th weight win: 1  419-th weight win: 9  tie: 0
+420-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+421-th weight win: 3  419-th weight win: 7  tie: 0
+421-th weight with mcts [100] win: 9  Random mcts [8000] win: 1  tie: 0
+422-th weight win: 4  419-th weight win: 6  tie: 0
+422-th weight with mcts [100] win: 7  Random mcts [8000] win: 3  tie: 0
+423-th weight win: 7  419-th weight win: 3  tie: 0
+new best weight: 423 generated!!!!
+423-th weight with mcts [100] win: 10  Random mcts [8000] win: 0  tie: 0

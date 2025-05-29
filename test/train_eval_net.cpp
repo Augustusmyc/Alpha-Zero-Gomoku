@@ -140,7 +140,7 @@ int main(int argc, char *argv[])
         cout << "Generating... current_weight = " << current_weight << endl;
         generate_data_for_train(current_weight, atoi(argv[2]) * NUM_TRAIN_THREADS);
     }else if (strcmp(argv[1], "eval_with_winner") == 0) {
-	   int current_weight;
+	    int current_weight;
         int best_weight;
 
         ifstream weight_logger_reader("current_and_best_weight.txt");
@@ -197,10 +197,10 @@ int main(int argc, char *argv[])
         			}    
 
              ///////////////
-		  result_log_info2 += "new best weight: " + to_string(current_weight) + " generated!!!!\n";
-            ofstream weight_logger_writer("current_and_best_weight.txt");
-            weight_logger_writer << current_weight << " " << current_weight;
-            weight_logger_writer.close();
+		//   result_log_info2 += "new best weight: " + to_string(current_weight) + " generated!!!!\n";
+        //     ofstream weight_logger_writer("current_and_best_weight.txt");
+        //     weight_logger_writer << current_weight << " " << current_weight;
+        //     weight_logger_writer.close();
              //////////////
          }
          cout << result_log_info2;

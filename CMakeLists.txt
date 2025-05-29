@@ -1,15 +1,16 @@
+cmake_minimum_required(VERSION 4.0.0)
 project(AlphaZeroGomoku)
 
 set(CMAKE_BUILD_TYPE Release)
 
-cmake_minimum_required(VERSION 3.13)
+
 
 
 if(CMAKE_COMPILER_IS_GNUCC)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a -pthread")
-    set(ONNXRUNTIME_ROOTDIR "/data/onnxruntime-linux-x64-gpu-1.11.1")
+    set(ONNXRUNTIME_ROOTDIR "/data/myc/onnxruntime-linux-x64-gpu-1.22.0")
 else()
-    set(ONNXRUNTIME_ROOTDIR "E:/Projects/onnxruntime-win-x64-1.11.1")
+    set(ONNXRUNTIME_ROOTDIR "E:/Projects/onnxruntime-win-x64-1.22.0")
 endif()
 
 
@@ -32,9 +33,13 @@ aux_source_directory(./cpp SOURCES)
 add_library(test_lib ${SOURCES})
 ADD_EXECUTABLE(train_eval_net  ./test/train_eval_net.cpp)
 ADD_EXECUTABLE(mcts_test  ./test/mcts_test.cpp)
+# ADD_EXECUTABLE(thread_pool_test  ./test/thread_pool_test.cpp)
+# ADD_EXECUTABLE(gomoku_test  ./test/gomoku_test.cpp)
 
 target_link_libraries(train_eval_net test_lib)
 target_link_libraries(mcts_test test_lib)
+# target_link_libraries(thread_pool_test test_lib)
+# target_link_libraries(gomoku_test test_lib)
 
 target_link_libraries(train_eval_net onnxruntime)
 target_link_libraries(mcts_test onnxruntime)

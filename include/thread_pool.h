@@ -4,95 +4,86 @@
 #include <queue>
 #include <thread>
 #include <atomic>
+#include <mutex>
 #include <condition_variable>
 #include <future>
 #include <functional>
 #include <stdexcept>
+#include <type_traits>
 
 class ThreadPool {
 public:
-  using task_type = std::function<void()>;
+    using task_type = std::function<void()>;
 
-  inline ThreadPool(unsigned short thread_num = 4) {
-    this->run.store(true);
-    this->idl_thread_num = thread_num;
+    explicit ThreadPool(unsigned short thread_num = std::thread::hardware_concurrency())
+        : run(true), idl_thread_num(thread_num) {
+        for (unsigned i = 0; i < thread_num; ++i) {
+            pool.emplace_back([this] {
+                while (run.load(std::memory_order_acquire)) {
+                    task_type task;
+                    
+                    {
+                        std::unique_lock<std::mutex> lock(this->lock);
+                        cv.wait(lock, [this] {
+                            return !tasks.empty() || !run.load(std::memory_order_acquire);
+                        });
 
-    for (unsigned int i = 0; i < thread_num; ++i) {
-      // thread type implicit conversion
-      pool.emplace_back([this] {
-        while (this->run) {
-          std::function<void()> task;
+                        if (!run.load(std::memory_order_acquire) && tasks.empty())
+                            return;
 
-          // get a task
-          {
-            std::unique_lock<std::mutex> lock(this->lock);
-            this->cv.wait(lock, [this] {
-              return this->tasks.size() > 0 || !this->run.load();
+                        task = std::move(tasks.front());
+                        tasks.pop();
+                    }
+
+                    idl_thread_num.fetch_sub(1, std::memory_order_relaxed);
+                    task();
+                    idl_thread_num.fetch_add(1, std::memory_order_relaxed);
+                }
             });
-
-            // exit
-            if (!this->run.load() && this->tasks.empty())
-              return;
-
-            // pop task
-            task = std::move(this->tasks.front());
-            this->tasks.pop();
-          }
-
-          // run a task
-          this->idl_thread_num--;
-          task();
-          this->idl_thread_num++;
         }
-      });
-    }
-  }
-
-  inline ~ThreadPool() {
-    // clean thread pool
-    this->run.store(false);
-    this->cv.notify_all(); // wake all thread
-
-    for (std::thread &thread : pool) {
-      thread.join();
-    }
-  }
-
-  template <class F, class... Args>
-  auto commit(F &&f, Args &&... args) -> std::future<decltype(f(args...))> {
-    // commit a task, return std::future
-    // example: .commit(std::bind(&Dog::sayHello, &dog));
-
-    if (!this->run.load())
-      throw std::runtime_error("commit on ThreadPool is stopped.");
-
-    // declare return type
-    using return_type = decltype(f(args...));
-
-    // make a shared ptr for packaged_task
-    // packaged_task package the bind function and future
-    auto task_ptr = std::make_shared<std::packaged_task<return_type()>>(
-        std::bind(std::forward<F>(f), std::forward<Args>(args)...));
-
-    {
-      std::lock_guard<std::mutex> lock(this->lock);
-      tasks.emplace([task_ptr]() { (*task_ptr)(); });
     }
 
-    // wake a thread
-    this->cv.notify_one();
+    ~ThreadPool() {
+        run.store(false, std::memory_order_release);
+        cv.notify_all();
+        
+        for (auto& thread : pool) {
+            if (thread.joinable()) thread.join();
+        }
+    }
 
-    return task_ptr->get_future();
-  }
+    template <typename F, typename... Args>
+    auto commit(F&& f, Args&&... args) -> std::future<std::invoke_result_t<F, Args...>> {
+        using return_type = std::invoke_result_t<F, Args...>;
+        
+        if (!run.load(std::memory_order_acquire))
+            throw std::runtime_error("ThreadPool is stopped");
 
-  inline int get_idl_num() { return this->idl_thread_num; }
+        auto task = std::make_shared<std::packaged_task<return_type()>>(
+            [func = std::forward<F>(f), ...args = std::forward<Args>(args)]() mutable {
+                return func(std::forward<Args>(args)...);
+            }
+        );
+
+        {
+            std::lock_guard<std::mutex> lock(this->lock);
+            tasks.emplace([task]() { (*task)(); });
+        }
+
+        cv.notify_one();
+        return task->get_future();
+    }
+
+    int get_idl_num() const { 
+        return idl_thread_num.load(std::memory_order_relaxed); 
+    }
 
 private:
-  std::vector<std::thread> pool; // thead pool
-  std::queue<task_type> tasks;   // tasks queue
-  std::mutex lock;               // lock for tasks queue
-  std::condition_variable cv;    // condition variable for tasks queue
+    std::vector<std::thread> pool;
+    std::queue<task_type> tasks;
+    mutable std::mutex lock;
+    std::condition_variable cv;
 
-  std::atomic<bool> run;                    // is running
-  std::atomic<unsigned int> idl_thread_num; // idle thread number
+    std::atomic<bool> run;
+    std::atomic<unsigned> idl_thread_num;
 };

@@ -8,14 +8,6 @@ using namespace std;
 int main(int argc, char* argv[]) {
   auto g = std::make_shared<Gomoku>(BORAD_SIZE, N_IN_ROW, BLACK);
   //Gomoku g(15, 5, 1);
-  //g.execute_move(12);
-  //g->execute_move(12);
-  //g->execute_move(13);
-  //g->execute_move(14);
-  //g->execute_move(15);
-  //g->execute_move(16);
-  // g->execute_move(17);
-  // g->execute_move(18);
   // g->execute_move(19);
   // g->render();
   
@@ -32,7 +24,7 @@ int main(int argc, char* argv[]) {
 #ifdef _WIN32
   module = new NeuralNetwork("E:/Projects/AlphaZero-Onnx/python/mymodel.onnx", NUM_MCT_SIMS);
 #else
-  module = new NeuralNetwork("/data/AlphaZero-Onnx/python/mymodel.onnx", NUM_MCT_SIMS);
+  module = new NeuralNetwork("/data/myc/Alpha-Zero-Gomoku/model/474.onnx", NUM_MCT_SIMS);
 #endif
   }
   else {
