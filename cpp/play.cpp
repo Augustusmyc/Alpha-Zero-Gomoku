@@ -151,18 +151,3 @@ void SelfPlay::self_play_for_train(unsigned int game_num,unsigned int start_batc
     //return { *this->board_buffer , *this->p_buffer ,*this->v_buffer };
 }
 
-// pair<int,int> SelfPlay::self_play_for_eval(unsigned int game_num, NeuralNetwork* a, NeuralNetwork* b) {
-//    std::vector<std::future<void>> futures;
-//    //NeuralNetwork* a = new NeuralNetwork(NUM_MCT_THREADS * NUM_MCT_SIMS);
-//    for (unsigned int i = 0; i < game_num; i++) {
-//        auto future = thread_pool->commit(std::bind(&SelfPlay::play, this,a,b));
-//        futures.emplace_back(std::move(future));
-//    }
-//    this->nn->batch_size = game_num * NUM_MCT_THREADS;
-//    for (unsigned int i = 0; i < futures.size(); i++) {
-//        futures[i].wait();
-//
-//        this->nn->batch_size = max((unsigned)1, (game_num - i) * NUM_MCT_THREADS);
-//    }
-//    //return { *this->board_buffer , *this->p_buffer ,*this->v_buffer };
-//}

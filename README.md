@@ -12,7 +12,7 @@ https://www.bilibili.com/video/BV1Fa411L7ea/
 
 PPT(Chinese):
 
-AlphaZero-AI网络教程.pptx
+Tutorial/AlphaZero-AI网络教程.pptx
 
 # Supported Games
 Currently only Gomoku and similar games such as Tic-Tac-Toe. 
@@ -50,14 +50,16 @@ train.sh: convert "python" to "/data/miniconda3/bin/python" or "python3" or your
 
 Download onnxruntime: https://github.com/microsoft/onnxruntime/releases/tag/v1.22.0
 
-CMakefiles.txt:  convert the onnxruntime path to your own path
+mv CMakeLists-Gomoku.txt CMakefiles.txt
 
+convert onnxruntime path in CMakefiles.txt to your own path：
+set(ONNXRUNTIME_ROOTDIR "/mnt/data/myc/projects/onnxruntime-linux-x64-gpu-1.22.0")
 
 
 
 mkdir build
 
-copy *.sh to ./build
+cp train.sh ./build
 
 cd ./build
 
@@ -70,8 +72,6 @@ cmake --build . --config Release   (or win10: open .sln file through visual Stud
 cd ./build
 
 chmod 777 train.sh
-
-chmod 777 train_net.sh
 
 bash train.sh
 
@@ -94,7 +94,7 @@ Increase or decrease "NUM_MCT_SIMS" in include/common.h (default 1600) to increa
 一个使用pytorch + onnxruntime训练的Alpha Zero训练框架。
 onnxruntime主要负责“左右互搏”的部分，pytorch负责模型参数优化。
 
-目前游戏仅支持五子棋和井字棋，如果有其它小伙伴愿意提供其它棋类游戏的源码，这里非常欢迎。
+目前游戏支持五子棋和中国象棋，如果有其它小伙伴愿意提供其它棋类游戏的源码，这里非常欢迎。
 
 支持多线程蒙特卡洛树搜索,该部分和模型推理（用于左右互搏）部分均由c++完成，之所以不用python主要是为了加快速度，并且避开python GIL的坑。
 

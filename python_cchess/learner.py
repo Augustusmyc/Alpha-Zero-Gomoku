@@ -11,18 +11,13 @@ import random, struct
 
 import sys
 
-sys.path.append('../build')
+sys.path.append('../build_cchess')
 
 from neural_network import NeuralNetWorkWrapper
 
 
 class Learner():
     def __init__(self, config):
-        # gomoku
-        self.n = config['n']
-        self.n_in_row = config['n_in_row']
-        self.action_size = config['action_size']
-
         # train
         self.num_iters = config['num_iters']
         self.num_eps = config['num_eps']
@@ -36,12 +31,18 @@ class Learner():
 
         self.examples_buffer = deque([], maxlen=config['examples_buffer_max_len'])
 
+        self.rows=10
+        self.cols=9
+        self.action_size = self.rows * self.cols * 35
+        self.input_channel = 2*7+3
+        self.input_size = self.rows * self.cols * self.input_channel
+
         # neural network
         self.batch_size = config['batch_size']
-        self.epochs = config['epochs']*8 # 没有对称的话
+        self.epochs = config['epochs'] # *8 for no symmetry
         self.nnet = NeuralNetWorkWrapper(config['lr'], config['l2'], config['num_layers'],
-                                         config['num_channels'], config['n'], 
-                                         self.action_size, config['input_channel_size'])
+                                         config['num_channels'], self.rows, self.cols, 
+                                         self.action_size, self.input_channel)
 
     def learn(self, model_dir,model_id):
         # train the model by self play
@@ -51,7 +52,7 @@ class Learner():
         # print(f"loading {model_id}-th model")
         self.nnet.load_model(model_path)
 
-        data_path = path.join('..', 'build', 'data')
+        data_path = path.join('..', 'build_cchess', 'data')
         train_data = self.load_samples(data_path)
         random.shuffle(train_data)
 
@@ -90,7 +91,7 @@ class Learner():
     def load_samples(self, folder):
         """load self.examples_buffer
         """
-        BOARD_SIZE = self.n
+        # BOARD_SIZE = self.n
         train_examples = []
         data_files = os.listdir(folder)
         for file_name in data_files:
@@ -99,64 +100,76 @@ class Learner():
                 # size = os.path.getsize(filepath) #获得文件大小
                 step = binfile.read(4)
                 step = int().from_bytes(step, byteorder='little', signed=True)
-                board = np.zeros((step, BOARD_SIZE * BOARD_SIZE))
-                for i in range(step):
-                    for j in range(BOARD_SIZE * BOARD_SIZE):
+                board = np.zeros((step, self.rows * self.cols))
+                for st in range(step):
+                    for j in range(self.rows * self.cols):
                         data = binfile.read(4)
                         data = int().from_bytes(data, byteorder='little', signed=True)
-                        board[i][j] = data
-                board = np.reshape(board,(-1,BOARD_SIZE,BOARD_SIZE))
-                prob = np.zeros((step, BOARD_SIZE * BOARD_SIZE))
-                for i in range(step):
-                    for j in range(BOARD_SIZE * BOARD_SIZE):
+                        board[st][j] = data
+                board = board.reshape(-1,self.rows,self.cols)
+                prob = np.zeros((step, self.action_size))
+                for st in range(step):
+                    for j in range(self.action_size):
                         data = binfile.read(4)
                         data = struct.unpack('f', data)[0]
-                        prob[i][j] = data
-                        # p = p.reshape((-1,BOARD_SIZE,BOARD_SIZE))
-                    # print(p)
+                        prob[st][j] = data
 
                 v = []
-                for i in range(step):
+                for st in range(step):
                     data = binfile.read(4)
                     data = int().from_bytes(data, byteorder='little', signed=True)
                     v.append(data)
                     # print(v)
 
                 color = []
-                for i in range(step):
+                for st in range(step):
                     data = binfile.read(4)
                     data = int().from_bytes(data, byteorder='little', signed=True)
                     color.append(data)
 
                 last_action = []
-                for i in range(step):
+                for st in range(step):
                     data = binfile.read(4)
                     data = int().from_bytes(data, byteorder='little', signed=True)
                     last_action.append(data)
 
-                for i in range(step):
-                    sym = self.get_symmetries(board[i], prob[i], last_action[i])
-                    # print(sym[0])
-                    # exit()
-                    # sym = [(board[i], prob[i], last_action[i])] # try no symmetries
-                    for b, p, a in sym:
-                        train_examples.append([b, a, color[i], p, v[i]])
+                # for st in range(step):
+                #     sym = self.get_symmetries(board[st], prob[st], last_action[st])
+                #     for b, p, a in sym:
+                #         train_examples.append([b, a, color[st], p, v[st]])
+                no_cap_ratio = []
+                for st in range(step):
+                    data = binfile.read(4)
+                    data=struct.unpack('f', data)[0]
+                    no_cap_ratio.append(data)
+                # print("no_cap_ratio =",no_cap_ratio[1])
+
+                board_new = -np.ones((step, self.input_size))
+                for st in range(step):
+                    for i in range(self.input_size):
+                        data = binfile.read(4)
+                        data=struct.unpack('f', data)[0]
+                        board_new[st][i] = data
+                board_new = board_new.reshape((-1,self.input_channel,self.rows,self.cols))
+                # print("board_new = \n",board_new[0][13,:,:]) # 13=下面的兵
+                for st in range(step):
+                    train_examples.append([board_new[st], last_action[st], color[st], prob[st], v[st]])
         return train_examples
 
 
 if __name__ == '__main__':
-    model_dir = path.join("..","build","weights")
+    model_dir = path.join("..","build_cchess","weights")
     le = Learner(config.config)
     if len(sys.argv) <= 1 or sys.argv[1] == "prepare":
         print("save 0-th model !!")
         le.nnet.save_model(path.join(model_dir,'0'))
-        print("done !")
+        print("prepare model done!")
     else:
         assert sys.argv[1] == "train", sys.argv[1]
-        with open(path.join("..","build","current_and_best_weight.txt"), 'r') as f:
+        with open(path.join("..","build_cchess","current_and_best_weight.txt"), 'r') as f:
             current_id, best_id =  f.readline().split(" ")
             current_id = int(current_id)
         le.learn(model_dir=model_dir, model_id=current_id)
-        with open(path.join("..","build","current_and_best_weight.txt"), 'w') as f:
+        with open(path.join("..","build_cchess","current_and_best_weight.txt"), 'w') as f:
             f.write(str(int(current_id)+1) + " "+ str(best_id))
         

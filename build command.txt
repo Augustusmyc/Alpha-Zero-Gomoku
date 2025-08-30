@@ -1,4 +1,4 @@
 cd .\build
-cmake -A x64 .. (or just "cmake ..")
+cmake .. （win10: cmake -A x64 ..）
 cmake --build . --config Release
 cd .\Release\

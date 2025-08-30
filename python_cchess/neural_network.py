@@ -56,7 +56,7 @@ class NeuralNetWork(nn.Module):
     """Policy and Value Network
     """
 
-    def __init__(self, num_layers, num_channels, n, action_size,input_channel_size):
+    def __init__(self, num_layers, num_channels, rows, cols, action_size, input_channel_size): # self, num_layers, num_channels, n, action_size,input_channel_size
         super(NeuralNetWork, self).__init__()
 
         # residual block
@@ -68,14 +68,14 @@ class NeuralNetWork(nn.Module):
         self.p_bn = nn.BatchNorm2d(num_features=4)
         self.relu = nn.ReLU(inplace=True)
 
-        self.p_fc = nn.Linear(4 * n ** 2, action_size)
+        self.p_fc = nn.Linear(4 * rows * cols, action_size)
         self.log_softmax = nn.LogSoftmax(dim=1)
 
         # value head
         self.v_conv = nn.Conv2d(num_channels, 2, kernel_size=1, padding=0, bias=False)
         self.v_bn = nn.BatchNorm2d(num_features=2)
 
-        self.v_fc1 = nn.Linear(2 * n ** 2, 256)
+        self.v_fc1 = nn.Linear(2 * rows * cols, 256)
         self.v_fc2 = nn.Linear(256, 1)
         self.tanh = nn.Tanh()
 
@@ -131,14 +131,15 @@ class NeuralNetWorkWrapper():
     """train and predict
     """
 
-    def __init__(self, lr, l2, num_layers, num_channels, n, action_size, input_channel_size=3):
+    def __init__(self, lr, l2, num_layers, num_channels, rows, cols, action_size,input_channel_size):
         """ init
         """
         self.lr = lr
         self.l2 = l2
         self.num_channels = num_channels
-        self.n = n
         self.input_channel_size = input_channel_size
+        self.rows = rows
+        self.cols = cols
 
         self.is_cuda_available = torch.cuda.is_available()
         if(self.is_cuda_available):
@@ -146,7 +147,7 @@ class NeuralNetWorkWrapper():
         else:
             print("no GPU found, try CPU")
 
-        self.neural_network = NeuralNetWork(num_layers, num_channels, n, action_size, input_channel_size)
+        self.neural_network = NeuralNetWork(num_layers, num_channels, rows, cols, action_size, input_channel_size)
         if self.is_cuda_available:
             self.neural_network.cuda()
 
@@ -218,27 +219,25 @@ class NeuralNetWorkWrapper():
         """convert data format
            return tensor
         """
-        n = self.n
+        # board_batch = torch.Tensor(np.array(board_batch)).unsqueeze(1)
+        # state0 = (board_batch > 0).float()
+        # state1 = (board_batch < 0).float()
 
-        board_batch = torch.Tensor(np.array(board_batch)).unsqueeze(1)
-        state0 = (board_batch > 0).float()
-        state1 = (board_batch < 0).float()
+        # state2 = torch.zeros((len(last_action_batch), 1, n, n)).float()
 
-        state2 = torch.zeros((len(last_action_batch), 1, n, n)).float()
+        # for i in range(len(board_batch)):
+        #     if cur_player_batch[i] == -1:
+        #         temp = state0[i].clone()
+        #         state0[i].copy_(state1[i])
+        #         state1[i].copy_(temp)
 
-        for i in range(len(board_batch)):
-            if cur_player_batch[i] == -1:
-                temp = state0[i].clone()
-                state0[i].copy_(state1[i])
-                state1[i].copy_(temp)
+        #     last_action = last_action_batch[i]
+        #     if last_action != -1:
+        #         x, y = last_action // self.n, last_action % self.n
+        #         state2[i][0][x][y] = 1
 
-            last_action = last_action_batch[i]
-            if last_action != -1:
-                x, y = last_action // self.n, last_action % self.n
-                state2[i][0][x][y] = 1
-
-        res =  torch.cat((state0, state1, state2), dim=1)
-        # res = torch.cat((state0, state1), dim=1)
+        # res =  torch.cat((state0, state1, state2), dim=1)
+        res = torch.Tensor(np.array(board_batch))
         return res.cuda() if self.is_cuda_available else res
 
     def set_learning_rate(self, lr):
@@ -270,7 +269,7 @@ class NeuralNetWorkWrapper():
         self.neural_network.eval()
 
         self.neural_network.cpu()
-        example = torch.rand(1, self.input_channel_size, self.n, self.n).cpu()
+        example = torch.rand(1, self.input_channel_size, self.rows, self.cols).cpu()
         dynamic_axes={"board":{0:"batch_size"},     # 批处理变量
                                     "P":{0:"batch_size"},"V":{0:"batch_size"}}
         torch.onnx.export(self.neural_network,
@@ -282,14 +281,16 @@ class NeuralNetWorkWrapper():
 
 
 if __name__ == '__main__':
-    net=NeuralNetWorkWrapper(lr=0.1, l2=0.1, num_layers=3, num_channels=32, n=15, action_size=15*15)
-    # print("save model")
-    # net.save_model("/data/AlphaZero-Onnx/python/mymodel")
+    net=NeuralNetWorkWrapper(lr=0.1, l2=0.1, num_layers=3, num_channels=32, rows=10, cols=9, action_size=9*10*34,input_channel_size=2*7+3)
+    
+    print("save model")
+    net.save_model("mymodel")
 
     print("load model")
-    net.load_model("/data/AlphaZero-Onnx/python/mymodel")
-    batch_all = 5
-    state_batch = np.zeros((batch_all+1,3,15,15))
+    net.load_model("mymodel")
+
+    batch_all = 2
+    state_batch = np.zeros((batch_all+1,2*7+3,10,9))
 
     state_batch[batch_all][1][0][0] = 1 # gomoku.execute_move(0);
     state_batch[batch_all][0][0][1] = 1 #   gomoku.execute_move(1);

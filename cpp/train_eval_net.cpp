@@ -79,8 +79,8 @@ vector<int> eval(int weight_a, int weight_b, unsigned int game_num,int a_sims,in
     }
 
     std::vector<std::future<void>> futures;
-    //NeuralNetwork* a = new NeuralNetwork(NUM_MCT_THREADS * NUM_MCT_SIMS);
     for (unsigned int i = 0; i < game_num; i++) {
+        bool a_first = (i % 2 == 0);   // 偶数局 A 先手，奇数局 B 先手
         auto future = thread_pool->commit(std::bind(play_for_eval, nn_a, nn_b, false, win_table,false, a_sims, b_sims));
         futures.emplace_back(std::move(future));
     }
@@ -110,15 +110,14 @@ int main(int argc, char *argv[])
         system("mkdir .\\data");
 #elif __linux__
         auto ret = system("mkdir ./weights");
-        // cout <<ret <<endl;
         ret = system("mkdir ./data");
 #endif
         ofstream weight_logger_writer("current_and_best_weight.txt");
         weight_logger_writer << 0 << " " << 0;
         weight_logger_writer.close();
 
-        ofstream random_mcts_logger_writer("random_mcts_number.txt");
-        random_mcts_logger_writer << NUM_MCT_SIMS;
+        ofstream random_mcts_logger_writer("mcts_number.txt");
+        random_mcts_logger_writer << 200 << " " << 100;
         random_mcts_logger_writer.close();
 
         cout << "Next: Generate initial weight by python." << endl;
@@ -168,8 +167,8 @@ int main(int argc, char *argv[])
         detail_logger_writer.close();
         
     }else if (strcmp(argv[1], "eval_with_random") == 0) {
-    	   int current_weight;
-        int best_weight;
+    	int current_weight;
+        //int best_weight;
 
         ifstream weight_logger_reader("current_and_best_weight.txt");
         weight_logger_reader >> current_weight;
@@ -178,23 +177,33 @@ int main(int argc, char *argv[])
         int game_num = atoi(argv[2]);
 
         int random_mcts_simulation;
-        ifstream random_mcts_logger_reader("random_mcts_number.txt");
-        random_mcts_logger_reader >> random_mcts_simulation;
+        int nn_mcts_simulation;  
+        // mcts_simulation can not be too small !! bigger than 10 is ok
+        ifstream mcts_logger_reader("mcts_number.txt");
+        mcts_logger_reader >> random_mcts_simulation;
+        mcts_logger_reader >> nn_mcts_simulation;
 
-        int nn_mcts_simulation = NUM_MCT_SIMS / 16; // can not be too small !!
+        
 
         vector<int> result_random_mcts = eval(current_weight, -1, game_num, nn_mcts_simulation, random_mcts_simulation);
         
         
         string result_log_info2 = to_string(current_weight) + "-th weight with mcts ["+ to_string(nn_mcts_simulation) + "] win: " + to_string(result_random_mcts[0]) + "  Random mcts ["+to_string(random_mcts_simulation)+ "] win: " + to_string(result_random_mcts[1]) + "  tie: " + to_string(result_random_mcts[2]) + "\n";
         if (result_random_mcts[0] == game_num) {
-        		if(random_mcts_simulation < 8000){
-        			random_mcts_simulation += 100;
-             		result_log_info2 += "add random mcts number to: " + to_string(random_mcts_simulation) + "\n";
-             		ofstream random_mcts_logger_writer("random_mcts_number.txt");
-	               random_mcts_logger_writer << random_mcts_simulation;
-	               random_mcts_logger_writer.close();
-        			}    
+            if(random_mcts_simulation < 8000){
+                random_mcts_simulation += 100;
+                result_log_info2 += "increase random mcts number to: " + to_string(random_mcts_simulation) + "\n";
+                ofstream random_mcts_logger_writer("mcts_number.txt");
+                random_mcts_logger_writer << random_mcts_simulation << " " << nn_mcts_simulation;
+                random_mcts_logger_writer.close();
+                }
+            else if(nn_mcts_simulation > 17){
+                nn_mcts_simulation -= 1;
+                result_log_info2 += "decrease nn mcts number to: " + to_string(nn_mcts_simulation) + "\n";
+                ofstream random_mcts_logger_writer("mcts_number.txt");
+                random_mcts_logger_writer << random_mcts_simulation << " " << nn_mcts_simulation;
+                random_mcts_logger_writer.close();
+            }
 
              ///////////////
 		//   result_log_info2 += "new best weight: " + to_string(current_weight) + " generated!!!!\n";
