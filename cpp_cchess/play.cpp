@@ -5,6 +5,8 @@
 
 #include<iostream>
 #include<fstream>
+#include <chrono>
+#include <iomanip>
 
 #define BUFFER_LEN 1000 //if debug，can be set very small such as 3
 #define v_buff_type std::vector<int> 
@@ -110,7 +112,13 @@ void SelfPlay::play(unsigned int saved_id){
         step++;
         // cout << "step = " << step << endl;
     }
-    cout << "Self play: total step num = " << step << " winner = " << game_state.second << endl;
+    // cout << "Self play: total step num = " << step << " winner = " << game_state.second << endl;
+    auto now = std::chrono::system_clock::now();
+    std::time_t t = std::chrono::system_clock::to_time_t(now);
+    std::stringstream ss;
+    ss << std::put_time(std::localtime(&t), "[%F %T]");
+    cout << ss.str() << " Self play: total step num = " << step
+         << " winner = " << game_state.second << endl;
 
     ofstream writter;
     writter.open("./data/data_" + to_string(saved_id), ios::out | ios::binary);
@@ -166,19 +174,35 @@ void SelfPlay::play(unsigned int saved_id){
 
 
 
-void SelfPlay::self_play_for_train(unsigned int game_num,unsigned int start_batch_id){
-    std::vector<std::future<void>> futures;
-    for (unsigned int i = 0; i < game_num; i++) {
-        auto future = thread_pool->commit(std::bind(&SelfPlay::play, this, start_batch_id+i));
-        futures.emplace_back(std::move(future));
-    }
-    this->nn->batch_size = game_num * NUM_MCT_THREADS;
-    for (unsigned int i = 0; i < futures.size(); i++) {
-        futures[i].wait();
+// void SelfPlay::self_play_for_train(unsigned int game_num,unsigned int start_batch_id){
+//     std::vector<std::future<void>> futures;
+//     for (unsigned int i = 0; i < game_num; i++) {
+//         auto future = thread_pool->commit(std::bind(&SelfPlay::play, this, start_batch_id+i));
+//         futures.emplace_back(std::move(future));
+//     }
+//     this->nn->batch_size = game_num * NUM_MCT_THREADS;
+//     for (unsigned int i = 0; i < futures.size(); i++) {
+//         futures[i].wait();
        
-        this->nn->batch_size = max((unsigned)1, (game_num - i) * NUM_MCT_THREADS);
-       // cout << "end" << endl;
+//         this->nn->batch_size = max((unsigned)1, (game_num - i) * NUM_MCT_THREADS);
+//     }
+// }
+
+void SelfPlay::self_play_for_train(unsigned int game_num,
+                                   unsigned int start_batch_id) {
+    // 用硬件并发数而不是 game_num
+    ThreadPool tp(std::thread::hardware_concurrency());   // e.g. 32
+    std::vector<std::future<void>> futures;
+
+    for (unsigned i = 0; i < game_num; ++i) {
+        futures.emplace_back(
+            tp.commit(std::bind(&SelfPlay::play, this, start_batch_id + i))
+        );
     }
-    //return { *this->board_buffer , *this->p_buffer ,*this->v_buffer };
+    // 固定 batch_size = 总任务数 * 单局线程数
+    nn->batch_size = game_num * NUM_MCT_THREADS;
+
+    for (auto& f : futures) f.wait();
 }
+
 

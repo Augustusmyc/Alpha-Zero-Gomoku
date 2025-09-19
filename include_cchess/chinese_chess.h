@@ -4,12 +4,25 @@
 #include <vector>
 #include <string>
 #include <map>
-// #include <common.h>
+#include <iostream>
+
 
 #define board_type std::vector<std::vector<int>>
 
 class ChineseChess {
 public:
+    // 放在 chinese_chess.h 里，#include 之后
+    inline bool log_fail(const char* msg,
+                        int piece, int from_x, int from_y, int to_x, int to_y)
+    {
+        std::cerr << "FAIL @" << __FILE__ << ":" << __LINE__
+                << " : " << msg
+                << " piece=" << piece
+                << " from=(" << from_x << "," << from_y << ")"
+                << " to=("   << to_x   << "," << to_y   << ")\n";
+        return false;
+    }
+
     using move_type = std::pair<int, int>; // (from_pos, to_pos)[last_move] or (from_pos, move_action)
 
     ChineseChess(int first_color = FirstColor);

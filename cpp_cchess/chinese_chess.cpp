@@ -160,6 +160,7 @@ bool ChineseChess::validate_move(int piece, int from_x, int from_y, int to_x, in
             
         case CANNON: {
             if (dx != 0 && dy != 0) return false;
+            if (from_x == to_x && from_y == to_y) return false; // 自己打自己
             // 检查路径上是否有阻挡
             int count = 0;
             if (dx == 0) { // 横向移动
@@ -480,10 +481,15 @@ void ChineseChess::execute_move_by_squeeze_pair(move_type move) {
     }
 
     // 检查移动是否合法
-    // std::cout << "is right? from_x: " << from_x << ", from_y: " << from_y << ", to_x: " << to_x << ", to_y: " << to_y << std::endl;
     if (is_illegal(from_x, from_y, to_x, to_y)) {
-        throw std::runtime_error("Illegal move");
+        std::stringstream ss;
+        ss << "Illegal move: "
+        << "from=(" << from_x << ',' << from_y << ") "
+        << "to=("   << to_x   << ',' << to_y   << ") "
+        << "piece=" << board[from_x][from_y] << " cur_color=" << cur_color << '\n';
+        throw std::runtime_error(ss.str());
     }
+
 
     // 检查是否是吃子/检查步数
     // if (board[to_x][to_y] != EMPTY) {

@@ -81,6 +81,7 @@ vector<int> eval(int weight_a, int weight_b, unsigned int game_num,int a_sims,in
 
     std::vector<std::future<void>> futures;
     for (unsigned int i = 0; i < game_num; i++) {
+        bool a_first = (i % 2 == 0);   // 偶数局 A 先手，奇数局 B 先手
         auto future = thread_pool->commit(std::bind(play_for_eval, nn_a, nn_b, false, win_table,false, a_sims, b_sims));
         futures.emplace_back(std::move(future));
     }
@@ -97,6 +98,39 @@ vector<int> eval(int weight_a, int weight_b, unsigned int game_num,int a_sims,in
     //cout << "win_table = " << win_table[0] << win_table[1] << win_table [2] << endl;
 
     return { win_table[0], win_table[1],win_table[2] };
+}
+
+
+/************* 新增：单局评估 *************/
+// 返回值：A 净胜分  =  (A 胜局数) - (B/Random 胜局数)
+// 平局或输则 ≤ 0
+int eval_one_game(int weight_a, int weight_b, bool a_first,
+                  int a_mct_sims, int b_mct_sims, bool vs_random)
+{
+    int win_table[3] = {0, 0, 0};   // 0:A 1:B/Random 2:和
+
+    NeuralNetwork* nn_a = nullptr;
+    NeuralNetwork* nn_b = nullptr;
+
+    if (weight_a >= 0) {
+        string path = "./weights/" + to_string(weight_a) + ".onnx";
+        nn_a = new NeuralNetwork(path, a_mct_sims);
+    }
+    if (!vs_random && weight_b >= 0) {
+        string path = "./weights/" + to_string(weight_b) + ".onnx";
+        nn_b = new NeuralNetwork(path, b_mct_sims);
+    }
+
+    play_for_eval(nn_a, nn_b, a_first, win_table, false, a_mct_sims, b_mct_sims);
+
+    delete nn_a;
+    delete nn_b;
+
+    // 只把结果映射成 exit code：
+    // 0 表示 A 胜，1 表示 B/Random 胜，2 表示和
+    if (win_table[0] > 0)      return 0;
+    if (win_table[1] > 0)      return 1;
+    return 2;
 }
 
 int main(int argc, char *argv[])
@@ -138,86 +172,109 @@ int main(int argc, char *argv[])
         logger_reader.close();
         cout << "Generating... current_weight = " << current_weight << endl;
         generate_data_for_train(current_weight, atoi(argv[2]) * NUM_TRAIN_THREADS);
-    }else if (strcmp(argv[1], "eval_with_winner") == 0) {
-	    int current_weight;
-        int best_weight;
+    }
+    // else if (strcmp(argv[1], "eval_with_winner") == 0) {
+	//     int current_weight;
+    //     int best_weight;
 
-        ifstream weight_logger_reader("current_and_best_weight.txt");
-        weight_logger_reader >> current_weight;
-        weight_logger_reader >> best_weight;
-        cout << "Evaluating... current_weight = " << current_weight << " and best_weight = " << best_weight << endl;
+    //     ifstream weight_logger_reader("current_and_best_weight.txt");
+    //     weight_logger_reader >> current_weight;
+    //     weight_logger_reader >> best_weight;
+    //     cout << "Evaluating... current_weight = " << current_weight << " and best_weight = " << best_weight << endl;
 
-        int game_num = atoi(argv[2]);
+    //     int game_num = atoi(argv[2]);
 
-        auto result = eval(current_weight, best_weight, game_num, NUM_MCT_SIMS, NUM_MCT_SIMS);
-        string result_log_info = to_string(current_weight) + "-th weight win: " + to_string(result[0]) + "  " + to_string(best_weight) + "-th weight win: " + to_string(result[1]) + "  tie: " + to_string(result[2]) + "\n";
+    //     auto result = eval(current_weight, best_weight, game_num, NUM_MCT_SIMS, NUM_MCT_SIMS);
+    //     string result_log_info = to_string(current_weight) + "-th weight win: " + to_string(result[0]) + "  " + to_string(best_weight) + "-th weight win: " + to_string(result[1]) + "  tie: " + to_string(result[2]) + "\n";
 
-        float win_ratio = result[0] / (result[1]+0.01);
-        if (win_ratio > 1.2 ) {
-            result_log_info += "new best weight: " + to_string(current_weight) + " generated!!!!\n";
-            ofstream weight_logger_writer("current_and_best_weight.txt");
-            weight_logger_writer << current_weight << " " << current_weight;
-            weight_logger_writer.close();
-        }
-        cout << result_log_info;
+    //     float win_ratio = result[0] / (result[1]+0.01);
+    //     if (win_ratio > 1.2 ) {
+    //         result_log_info += "new best weight: " + to_string(current_weight) + " generated!!!!\n";
+    //         ofstream weight_logger_writer("current_and_best_weight.txt");
+    //         weight_logger_writer << current_weight << " " << current_weight;
+    //         weight_logger_writer.close();
+    //     }
+    //     cout << result_log_info;
 
-        ofstream detail_logger_writer("logger.txt", ios::app);
-        // detail_logger_writer << result_log_info << result_log_info2;
-        detail_logger_writer << result_log_info;
-        detail_logger_writer.close();
+    //     ofstream detail_logger_writer("logger.txt", ios::app);
+    //     // detail_logger_writer << result_log_info << result_log_info2;
+    //     detail_logger_writer << result_log_info;
+    //     detail_logger_writer.close();
         
-    }else if (strcmp(argv[1], "eval_with_random") == 0) {
-    	int current_weight;
-        //int best_weight;
+    // }else if (strcmp(argv[1], "eval_with_random") == 0) {
+    // 	int current_weight;
+    //     //int best_weight;
 
-        ifstream weight_logger_reader("current_and_best_weight.txt");
-        weight_logger_reader >> current_weight;
-        //weight_logger_reader >> best_weight;
+    //     ifstream weight_logger_reader("current_and_best_weight.txt");
+    //     weight_logger_reader >> current_weight;
+    //     //weight_logger_reader >> best_weight;
 
-        int game_num = atoi(argv[2]);
+    //     int game_num = atoi(argv[2]);
 
-        int random_mcts_simulation;
-        int nn_mcts_simulation;  
-        // mcts_simulation can not be too small !! bigger than 20 is ok
-        ifstream mcts_logger_reader("mcts_number.txt");
-        mcts_logger_reader >> random_mcts_simulation;
-        mcts_logger_reader >> nn_mcts_simulation;
+    //     int random_mcts_simulation;
+    //     int nn_mcts_simulation;  
+    //     // mcts_simulation can not be too small !! bigger than 20 is ok
+    //     ifstream mcts_logger_reader("mcts_number.txt");
+    //     mcts_logger_reader >> random_mcts_simulation;
+    //     mcts_logger_reader >> nn_mcts_simulation;
 
         
 
-        vector<int> result_random_mcts = eval(current_weight, -1, game_num, nn_mcts_simulation, random_mcts_simulation);
+    //     vector<int> result_random_mcts = eval(current_weight, -1, game_num, nn_mcts_simulation, random_mcts_simulation);
         
         
-        string result_log_info2 = to_string(current_weight) + "-th weight with mcts ["+ to_string(nn_mcts_simulation) + "] win: " + to_string(result_random_mcts[0]) + "  Random mcts ["+to_string(random_mcts_simulation)+ "] win: " + to_string(result_random_mcts[1]) + "  tie: " + to_string(result_random_mcts[2]) + "\n";
-        if (result_random_mcts[0] == game_num) {
-            if(random_mcts_simulation < 8000){
-                random_mcts_simulation += 100;
-                result_log_info2 += "increase random mcts number to: " + to_string(random_mcts_simulation) + "\n";
-                ofstream random_mcts_logger_writer("mcts_number.txt");
-                random_mcts_logger_writer << random_mcts_simulation << " " << nn_mcts_simulation;
-                random_mcts_logger_writer.close();
-                }
-            else if(nn_mcts_simulation > 17){
-                nn_mcts_simulation -= 1;
-                result_log_info2 += "decrease nn mcts number to: " + to_string(nn_mcts_simulation) + "\n";
-                ofstream random_mcts_logger_writer("mcts_number.txt");
-                random_mcts_logger_writer << random_mcts_simulation << " " << nn_mcts_simulation;
-                random_mcts_logger_writer.close();
-            }
+    //     string result_log_info2 = to_string(current_weight) + "-th weight with mcts ["+ to_string(nn_mcts_simulation) + "] win: " + to_string(result_random_mcts[0]) + "  Random mcts ["+to_string(random_mcts_simulation)+ "] win: " + to_string(result_random_mcts[1]) + "  tie: " + to_string(result_random_mcts[2]) + "\n";
+    //     if (result_random_mcts[0] == game_num) {
+    //         if(random_mcts_simulation < 8000){
+    //             random_mcts_simulation += 100;
+    //             result_log_info2 += "increase random mcts number to: " + to_string(random_mcts_simulation) + "\n";
+    //             ofstream random_mcts_logger_writer("mcts_number.txt");
+    //             random_mcts_logger_writer << random_mcts_simulation << " " << nn_mcts_simulation;
+    //             random_mcts_logger_writer.close();
+    //             }
+    //         else if(nn_mcts_simulation > 17){
+    //             nn_mcts_simulation -= 1;
+    //             result_log_info2 += "decrease nn mcts number to: " + to_string(nn_mcts_simulation) + "\n";
+    //             ofstream random_mcts_logger_writer("mcts_number.txt");
+    //             random_mcts_logger_writer << random_mcts_simulation << " " << nn_mcts_simulation;
+    //             random_mcts_logger_writer.close();
+    //         }
+    //      }
+    //      cout << result_log_info2;
 
-             ///////////////
-		//   result_log_info2 += "new best weight: " + to_string(current_weight) + " generated!!!!\n";
-        //     ofstream weight_logger_writer("current_and_best_weight.txt");
-        //     weight_logger_writer << current_weight << " " << current_weight;
-        //     weight_logger_writer.close();
-             //////////////
-         }
-         cout << result_log_info2;
+    //     ofstream detail_logger_writer("logger.txt", ios::app);
+    //     detail_logger_writer << result_log_info2;
+    //     detail_logger_writer.close();
+    // }
+     /////// 新增的代码，可以取代前面的，方便并行
+    else if (strcmp(argv[1], "eval_one_winner") == 0) {
+        // 用法：./train_eval_net eval_one_winner <a_first_flag>
+        int current_weight, best_weight;
+        ifstream("current_and_best_weight.txt") >> current_weight >> best_weight;
 
-        ofstream detail_logger_writer("logger.txt", ios::app);
-        detail_logger_writer << result_log_info2;
-        detail_logger_writer.close();
-    }else{
+        bool a_first = atoi(argv[2]);      // 0 or 1
+        int FAST_NUM_MCT_SIMS = 200; 
+        // 以前用FAST_NUM_MCT_SIMS=1600测试太慢了,TODO:研究下为啥这个值不能设置得太低，否则会报错：Illegal move: from=(0,0) to=(0,-1) piece=-5 cur_color=1
+        int res = eval_one_game(current_weight, best_weight, a_first,
+                    FAST_NUM_MCT_SIMS, FAST_NUM_MCT_SIMS, false);
+        exit(res);      // 0/1/2
+    }
+    else if (strcmp(argv[1], "eval_one_random") == 0) {
+        // 用法：./train_eval_net eval_one_random <a_first_flag>
+        int current_weight;
+        ifstream("current_and_best_weight.txt") >> current_weight;
+
+        int random_mcts, nn_mcts;
+        ifstream("mcts_number.txt") >> random_mcts >> nn_mcts;
+
+        bool a_first = atoi(argv[2]);      // 0 or 1
+        int res = eval_one_game(current_weight, -1, a_first,
+                    nn_mcts, random_mcts, true);
+        exit(res);      // 0/1/2
+    }
+    //////
+    
+    else{
         cout << "Do nothing...check your input!!" << endl;
     }
 }

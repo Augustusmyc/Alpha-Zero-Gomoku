@@ -99,6 +99,42 @@ vector<int> eval(int weight_a, int weight_b, unsigned int game_num,int a_sims,in
     return { win_table[0], win_table[1],win_table[2] };
 }
 
+/************* 新增：单局评估 *************/
+void eval_one_game(int weight_a, int weight_b, bool a_first,
+                   int a_mct_sims, int b_mct_sims, bool vs_random)
+{
+    int win_table[3] = {0, 0, 0};   // 0:A胜 1:B/Random胜 2:和
+    NeuralNetwork* nn_a = nullptr;
+    NeuralNetwork* nn_b = nullptr;
+
+    if (weight_a >= 0) {
+        string path = "./weights/" + to_string(weight_a) + ".onnx";
+        nn_a = new NeuralNetwork(path, a_mct_sims);
+    }
+
+    if (!vs_random) {
+        if (weight_b >= 0) {
+            string path = "./weights/" + to_string(weight_b) + ".onnx";
+            nn_b = new NeuralNetwork(path, b_mct_sims);
+        }
+    }   // vs_random 时 nn_b 保持空，内部会用随机策略
+
+    play_for_eval(nn_a, nn_b, a_first, win_table, false, a_mct_sims, b_mct_sims);
+
+    // 打印单行结果，方便 awk 解析
+    if (vs_random) {
+        printf("%d-th weight win: %d  Random win: %d  tie: %d\n",
+               weight_a, win_table[0], win_table[1], win_table[2]);
+    } else {
+        printf("%d-th weight win: %d  %d-th weight win: %d  tie: %d\n",
+               weight_a, win_table[0], weight_b, win_table[1], win_table[2]);
+    }
+
+    delete nn_a;
+    delete nn_b;
+}
+
+
 int main(int argc, char *argv[])
 {
     if (strcmp(argv[1], "prepare") == 0)
@@ -204,20 +240,38 @@ int main(int argc, char *argv[])
                 random_mcts_logger_writer << random_mcts_simulation << " " << nn_mcts_simulation;
                 random_mcts_logger_writer.close();
             }
-
-             ///////////////
-		//   result_log_info2 += "new best weight: " + to_string(current_weight) + " generated!!!!\n";
-        //     ofstream weight_logger_writer("current_and_best_weight.txt");
-        //     weight_logger_writer << current_weight << " " << current_weight;
-        //     weight_logger_writer.close();
-             //////////////
          }
          cout << result_log_info2;
 
         ofstream detail_logger_writer("logger.txt", ios::app);
         detail_logger_writer << result_log_info2;
         detail_logger_writer.close();
-    }else{
+    }
+    
+    /////// 新增的代码，可以取代前面的，方便并行
+    else if (strcmp(argv[1], "eval_one_winner") == 0) {
+        // 用法：./train_eval_net eval_one_winner <a_first_flag>
+        int current_weight, best_weight;
+        ifstream("current_and_best_weight.txt") >> current_weight >> best_weight;
+
+        bool a_first = atoi(argv[2]);      // 0 or 1
+        eval_one_game(current_weight, best_weight, a_first,
+                    NUM_MCT_SIMS, NUM_MCT_SIMS, false);
+    }
+    else if (strcmp(argv[1], "eval_one_random") == 0) {
+        // 用法：./train_eval_net eval_one_random <a_first_flag>
+        int current_weight;
+        ifstream("current_and_best_weight.txt") >> current_weight;
+
+        int random_mcts, nn_mcts;
+        ifstream("mcts_number.txt") >> random_mcts >> nn_mcts;
+
+        bool a_first = atoi(argv[2]);      // 0 or 1
+        eval_one_game(current_weight, -1, a_first,
+                    nn_mcts, random_mcts, true);
+    }
+    //////
+    else{
         cout << "Do nothing...check your input!!" << endl;
     }
 }

@@ -11,6 +11,7 @@ int main(int argc, char* argv[]) {
     bool ai_red = true;
     const int rows = ChineseChess::rows;
     const int cols = ChineseChess::cols;
+    // int Fast_NUM_MCT_SIMS = 3; # NUM_MCT_SIMS=1600不方便调试就用这个
     
     if (argc <= 1) {
         cout << "Warning: No weight path specified. AI will play randomly." << endl;

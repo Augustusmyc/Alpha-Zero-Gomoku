@@ -11,7 +11,7 @@
 #include <onnx.h>
 #include <thread_pool.h>
 
-#define NUM_MCT_THREADS 4
+#define NUM_MCT_THREADS 8
 #define NUM_MCT_SIMS 1600 // debug mode: 60; std mode:1600
 #define EXPLORE_STEP 10
 #define C_PUCT 5

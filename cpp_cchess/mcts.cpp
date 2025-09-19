@@ -302,18 +302,15 @@ int MCTS::get_best_action(ChineseChess *go_or_chess) {
       best_action = i;
     }
   }
-  // assert(best_action >= 0);
-  // std::cout << "children.size() = " << children.size() << std::endl;
-  // if (best_action < 0) {
-  //   auto legal_moves = go_or_chess->get_legal_moves();
-  //   std::cout << "best_action < 0 ?? Maybe mct_num is too small, check expand and legal moves !!" << std::endl;
-  //   for (unsigned int i = 0; i < legal_moves.size(); i++) {
-  //      if (legal_moves[i] == 1) {
-  //         std::cout << "legal_moves[" << i << "] = 1" << std::endl;
-  //         return i;
-  //      }
-  //   }
-  // }
+  if (best_action < 0) {
+    std::cerr << "MCTS returned -1, sims=" << num_mcts_sims << ". Change to a random legal move action !!\n";
+    auto legal = go_or_chess->get_legal_moves();
+    std::vector<int> legal_idx;
+    for (int i = 0; i < legal.size(); ++i)
+        if (legal[i]) legal_idx.push_back(i);
+    std::uniform_int_distribution<int> dist(0, legal_idx.size()-1);
+    best_action = legal_idx[dist(rnd_eng)]; // random legal move
+  }
   return best_action;
 }
 
