@@ -32,7 +32,7 @@ aux_source_directory(./cpp SOURCES)
 
 add_library(src_lib ${SOURCES})
 ADD_EXECUTABLE(mcts_test  ./cpp/mcts_test.cpp)
-ADD_EXECUTABLE(game_test  ./test/gomoku_test.cpp)
+ADD_EXECUTABLE(game_test  ./test/go_test.cpp)
 ADD_EXECUTABLE(train_eval_net  ./cpp/train_eval_net.cpp)
 
 target_link_libraries(train_eval_net src_lib)
@@ -42,18 +42,8 @@ target_link_libraries(game_test src_lib)
 target_link_libraries(train_eval_net onnxruntime)
 target_link_libraries(mcts_test onnxruntime)
 
-if (MSVC)
- file(GLOB ONNX_DLLS "${ONNXRUNTIME_ROOTDIR}/lib/*.dll")
- add_custom_command(TARGET test_lib POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    ${ONNX_DLLS} ${CMAKE_CURRENT_BINARY_DIR}/Release)
-endif (MSVC)
-
-
-# ADD_EXECUTABLE(AlphaZeroInference  main.cpp)
-
-# target_link_libraries(AlphaZeroInference onnxruntime)
-
-
-# if(HAVE_TENSORRT_PROVIDER_FACTORY_H)
-#   target_compile_definitions(AlphaZeroInference PRIVATE -DHAVE_TENSORRT_PROVIDER_FACTORY_H)
-# endif()
+# if (MSVC)
+#  file(GLOB ONNX_DLLS "${ONNXRUNTIME_ROOTDIR}/lib/*.dll")
+#  add_custom_command(TARGET test_lib POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#                     ${ONNX_DLLS} ${CMAKE_CURRENT_BINARY_DIR}/Release)
+# endif (MSVC)

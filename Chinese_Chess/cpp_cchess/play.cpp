@@ -1,6 +1,5 @@
 #include <play.h>
 #include <mcts.h>
-// #include <common.h>
 #include <onnx.h>
 
 #include<iostream>

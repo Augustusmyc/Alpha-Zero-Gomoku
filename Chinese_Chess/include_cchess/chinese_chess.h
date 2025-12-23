@@ -66,7 +66,7 @@ public:
     static const int cols = 9;
     static const int mode_num = 9+10+8+8; // 单一位置所有可能的action=35
     static const int piece_num = 7;
-    static const int time_limit = 1000; // 100步不吃子/200步未结束，游戏平局
+    static const int time_limit = 300; // 300步不吃子/未结束，游戏平局
     static const int input_size = rows*cols*(2*piece_num + 3); // 棋盘大小 *（双方棋子类型*2 + last_move_to_xy + 当前玩家颜色 + 已有多长时间不吃子）
     static const int last_move_channel = 2*piece_num;
     static const int color_channel = 2*piece_num + 1;

@@ -1,22 +1,22 @@
 #!/bin/bash
-export CUDA_VISIBLE_DEVICES=2
-set -euo pipefail  # 开启严格错误检查（命令失败、未定义变量、管道失败时退出）
-trap 'echo "Error: $BASH_COMMAND failed with exit code $?" >&2; exit 1' ERR  # 捕获错误并输出详细信息
+# export CUDA_VISIBLE_DEVICES=2
+# set -euo pipefail  # 开启严格错误检查（命令失败、未定义变量、管道失败时退出）
+# trap 'echo "Error: $BASH_COMMAND failed with exit code $?" >&2; exit 1' ERR  # 捕获错误并输出详细信息
 
 n=1
 batch_num=5
 game_num=10    
-do_initialize=1
+do_initialize=0
 
 timestamp() { date '+%F %T'; }
 
 if [ "$do_initialize" = 1 ]; then
     echo "[$(timestamp)] initializing..."
     ./train_eval_net prepare || exit 1
-    python ../python/learner.py || exit 1
+    python ../python_cchess/learner.py || exit 1 # 这里是中国象棋游戏，如果是五子棋，请自行修改python_cchess为python，
 fi
 
-while [ $n -le 500 ]; do
+while [ $n -le 5000 ]; do
     echo "[$(timestamp)] --------------$n-th train------------------"
 
     # 1. 并行产生 batch_num 个自弈文件
@@ -27,7 +27,7 @@ while [ $n -le 500 ]; do
 
     # 2. 训练
     echo "[$(timestamp)] -----learning..."
-    python ../python/learner.py train
+    python ../python_cchess/learner.py train
 
     # 3. 并行评估
     echo "[$(timestamp)] -----evaluating current and best..."

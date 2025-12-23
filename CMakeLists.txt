@@ -8,7 +8,7 @@ set(CMAKE_BUILD_TYPE Release)
 
 if(CMAKE_COMPILER_IS_GNUCC)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a -pthread")
-    set(ONNXRUNTIME_ROOTDIR "/mnt/data/myc/projects/onnxruntime-linux-x64-gpu-1.22.0")
+    set(ONNXRUNTIME_ROOTDIR "/data/myc/onnxruntime-linux-x64-gpu-1.22.0")
 else()
     set(ONNXRUNTIME_ROOTDIR "E:/Projects/onnxruntime-win-x64-1.22.0")
 endif()
@@ -27,13 +27,13 @@ link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
 
 
 # add sources
-include_directories(./include_cchess)
-aux_source_directory(./cpp_cchess SOURCES)
+include_directories(./include)
+aux_source_directory(./cpp SOURCES)
 
 add_library(src_lib ${SOURCES})
-ADD_EXECUTABLE(mcts_test  ./cpp_cchess/mcts_cchess_test.cpp)
-ADD_EXECUTABLE(game_test  ./test/cchess_test.cpp)
-ADD_EXECUTABLE(train_eval_net  ./cpp_cchess/train_eval_net.cpp)
+ADD_EXECUTABLE(mcts_test  ./cpp/mcts_test.cpp)
+ADD_EXECUTABLE(game_test  ./test/go_test.cpp)
+ADD_EXECUTABLE(train_eval_net  ./cpp/train_eval_net.cpp)
 
 target_link_libraries(train_eval_net src_lib)
 target_link_libraries(mcts_test src_lib)
@@ -42,8 +42,8 @@ target_link_libraries(game_test src_lib)
 target_link_libraries(train_eval_net onnxruntime)
 target_link_libraries(mcts_test onnxruntime)
 
-if (MSVC)
- file(GLOB ONNX_DLLS "${ONNXRUNTIME_ROOTDIR}/lib/*.dll")
- add_custom_command(TARGET src_lib POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    ${ONNX_DLLS} ${CMAKE_CURRENT_BINARY_DIR}/Release)
-endif (MSVC)
+# if (MSVC)
+#  file(GLOB ONNX_DLLS "${ONNXRUNTIME_ROOTDIR}/lib/*.dll")
+#  add_custom_command(TARGET test_lib POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#                     ${ONNX_DLLS} ${CMAKE_CURRENT_BINARY_DIR}/Release)
+# endif (MSVC)

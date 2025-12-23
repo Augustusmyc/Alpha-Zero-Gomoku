@@ -1,51 +1,37 @@
 #include <iostream>
 #include <mcts.h>
-#include <common.h>
+#include <gomoku.h>
 #include <onnx.h>
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
-  auto g = std::make_shared<Gomoku>(BORAD_SIZE, N_IN_ROW, BLACK);
-  //Gomoku g(15, 5, 1);
-  // g->execute_move(19);
-  // g->render();
-  
-  // Deserialize the ScriptModule from a file using torch::jit::load().
-  //std::shared_ptr<torch::jit::script::Module> module = torch::jit::load("../test/models/checkpoint.pt");
-  //torch::jit::script::Module module = torch::jit::load("../test/models/checkpoint.pt");
+  int board_size = BORAD_SIZE;
+  auto g = std::make_shared<Gomoku>(board_size, N_IN_ROW, BLACK);
   
   NeuralNetwork* module = nullptr;
   bool ai_black = true;
   if (argc <= 1) {
-      //cout << "Do not load weights. AI color = BLACK." << endl;
-      
       cout << "Warning: Find No weight path and color, assume they are mymodel and 1 (AI color:Black)" << endl;
-#ifdef _WIN32
-  module = new NeuralNetwork("E:/Projects/AlphaZero-Onnx/python/mymodel.onnx", NUM_MCT_SIMS);
-#else
-  module = new NeuralNetwork("/data/myc/Alpha-Zero-Gomoku/model/474.onnx", NUM_MCT_SIMS);
-#endif
-  }
+  #ifdef _WIN32
+    module = new NeuralNetwork("E:/Projects/AlphaZero-Onnx/python/mymodel.onnx", NUM_MCT_SIMS);
+  #else
+    module = new NeuralNetwork("/data/myc/Alpha-Zero-Gomoku/model/423.onnx", NUM_MCT_SIMS);
+  #endif
+    }
   else {
       ai_black = strcmp(argv[2], "1") == 0 ? true : false;
       string color = ai_black ? "BLACK" : "WHITE";
       cout << "Load weights: "<< argv[1] << "  AI color: " << color << endl;
-      // wchar_t wchar[128] = {0};
-      // swprintf(wchar,128,L"%S",argv[1]);
 
       module = new NeuralNetwork(argv[1], NUM_MCT_SIMS);
   }
-  //module->save_weights("net.pt");
   
   MCTS m(module, NUM_MCT_THREADS, C_PUCT, NUM_MCT_SIMS, C_VIRTUAL_LOSS, BORAD_SIZE * BORAD_SIZE);
 
   std::cout << "Running..." << std::endl;
 
-  
-  char move_ic;
-  int move_j;
-  bool is_illlegal = true;
+
   std::pair<int, int> game_state;
   if (ai_black) {
       int res = m.get_best_action(g.get());
@@ -57,38 +43,66 @@ int main(int argc, char* argv[]) {
     g->render();
     game_state = g->get_game_status();
     if (game_state.first != 0) break;
-    int x, y;
+
+    // int x, y;
     printf("your move: \n");
-    std::cin >> move_ic >> move_j;
-    x = move_ic - 'A';
-    y = move_j - 1;
-    is_illlegal = g->is_illegal(x,y);
-    while (is_illlegal){
-      printf("Illegal move ! Please input \"character\" and \"number\" such as A 1 and ensure the position is empty !\n");
-      printf("move again: \n");
-      std::cin >> move_ic >> move_j;
-      x = move_ic - 'A';
-      y = move_j - 1;
-      is_illlegal = g->is_illegal(x,y);
-    }
-    int my_move = x * BORAD_SIZE + y;
-    m.update_with_move(my_move);
-    g->execute_move(my_move);
-    game_state = g->get_game_status();
-    if (game_state.first != 0) {
-        g->render();
-        break;
+    std::string input;
+    std::cin >> input;
+    
+    // 清理输入流状态（防止无限循环）
+    if (std::cin.fail()) {
+        std::cin.clear(); // 清除错误状态
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 丢弃无效输入
     }
 
-    int res = m.get_best_action(g.get());
-    m.update_with_move(res);
-    g->execute_move(res);
+    // 检查输入长度是否合法
+    if (input.length() < 2) {
+        std::cout << "输入格式错误，请重新输入!" << std::endl;
+        continue;
+    }
 
-
-    // std::for_each(res.begin(), res.end(),
-    //               [](double x) { std::cout << x << ","; });
-    // std::cout << std::endl;
-    // m.update_with_move(-1);
+    // 解析坐标（支持大小写）
+    char move_ic = std::toupper(input[0]);
+    std::string num_str = input.substr(1);
+    
+    // 检查字母是否越界
+    if (move_ic < 'A' || move_ic >= 'A' + board_size) {
+        std::cout << "行号超出范围，有效范围是 A-" << char('A' + board_size - 1) << std::endl;
+        continue;
+    }
+    // 解析数字部分
+      try {
+          int move_j_int = std::stoi(num_str);
+          if (move_j_int < 1 || move_j_int > board_size) {
+              std::cout << "列号超出范围，有效范围是 1-" << board_size << std::endl;
+              continue;
+          }
+          
+          uint x = move_ic - 'A';
+          uint y = move_j_int - 1;
+          
+          // 检查位置是否非法（修正了拼写错误）
+          if (g->is_illegal(x, y)) {
+              std::cout << "该位置非法，请重新输入!" << std::endl;
+              continue;
+          }
+          
+          // 执行落子
+          int my_move = x * board_size + y;
+          m.update_with_move(my_move);
+          g->execute_move(my_move);
+          game_state = g->get_game_status();
+          if (game_state.first != 0) {
+              g->render();
+              break;
+          }
+          int res = m.get_best_action(g.get());
+          m.update_with_move(res);
+          g->execute_move(res);
+          
+      } catch (const std::exception& e) {
+          std::cout << "输入格式错误，请重新输入!" << std::endl;
+      }
   }
   std::cout << "winner num = " << game_state.second << std::endl;
   return 0;

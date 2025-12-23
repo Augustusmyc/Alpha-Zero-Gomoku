@@ -27,6 +27,11 @@ public:
   inline int get_current_color() const { return this->cur_color; }
   inline unsigned int get_n() const { return this->n; }
 
+  enum Color {
+        FirstColor = 1,
+        SecondColor = -1
+    };
+
 private:
   board_type board;      // game borad
   const unsigned int n;        // board size

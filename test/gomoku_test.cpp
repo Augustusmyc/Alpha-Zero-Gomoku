@@ -1,57 +1,91 @@
-#include <iostream>
-#include <vector>
 #include <gomoku.h>
+#include <iostream>
+#include <cctype> // 用于toupper函数
+#include <limits> // 用于numeric_limits
+#include <string> // 用于字符串处理
 
 int main() {
-  Gomoku gomoku(10, 5, 1);
-
-  // test execute_move
-  gomoku.execute_move(3);
-  gomoku.execute_move(4);
-  gomoku.execute_move(6);
-  gomoku.execute_move(23);
-  gomoku.execute_move(8);
-  gomoku.execute_move(9);
-  gomoku.execute_move(78);
-  gomoku.execute_move(0);
-  gomoku.execute_move(17);
-  gomoku.execute_move(7);
-  gomoku.execute_move(19);
-  gomoku.execute_move(67);
-  gomoku.execute_move(60);
-  gomoku.execute_move(14);
-  gomoku.execute_move(11);
-  gomoku.execute_move(2);
-  gomoku.execute_move(99);
-  gomoku.execute_move(10);
-  gomoku.execute_move(1);
-  gomoku.execute_move(5);
-  gomoku.execute_move(18);
-  gomoku.execute_move(12);
-  gomoku.execute_move(15);
-  gomoku.execute_move(24);
-  gomoku.execute_move(16);
-
-  // test display
-  gomoku.render();
-
-  // test get_xxx
-  std::cout << gomoku.get_action_size() << std::endl;
-  std::cout << gomoku.get_current_color() << std::endl;
-
-  std::cout << gomoku.get_last_move() << std::endl;
-
-  // test has_legal_moves
-  std::cout << gomoku.has_legal_moves() << std::endl;
-
-  // test get_legal_moves
-  auto legal_moves = gomoku.get_legal_moves();
-  for (unsigned int i = 0; i < legal_moves.size(); i++) {
-    std::cout << legal_moves[i] << ", ";
-  }
-  std::cout << std::endl;
-
-  // test get_game_status
-  auto game_status = gomoku.get_game_status();
-  std::cout << game_status.first << ", " << game_status.second << std::endl;
+    // ChineseChess game(ChineseChess::FirstColor);
+    int board_size = 15;
+    Gomoku game(board_size, 5, Gomoku::FirstColor);
+    
+    while (true) {
+        game.render();
+        
+        auto status = game.get_game_status();
+        if (status.first == 1) {
+            if (status.second == 0) {
+                std::cout << "游戏结束: 和棋!" << std::endl;
+            } else {
+                std::cout << "游戏结束: " 
+                          << (status.second == Gomoku::FirstColor ? "黑方" : "白方")
+                          << "获胜!" << std::endl;
+            }
+            break;
+        }
+        
+        std::cout << (game.get_current_color() == Gomoku::FirstColor ? "黑方" : "白方")
+                  << "走棋，请输入落子处 (例如: A1): ";
+        
+        std::string input;
+        std::cin >> input;
+        
+        // 清理输入流状态（防止无限循环）
+        if (std::cin.fail()) {
+            std::cin.clear(); // 清除错误状态
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 丢弃无效输入
+        }
+        
+        // if (input == "undo") {
+        //     if (game.undo_move()) {
+        //         std::cout << "悔棋成功!" << std::endl;
+        //     } else {
+        //         std::cout << "无法悔棋!" << std::endl;
+        //     }
+        //     continue;
+        // }
+        
+        // 检查输入长度是否合法
+        if (input.length() < 2) {
+            std::cout << "输入格式错误，请重新输入!" << std::endl;
+            continue;
+        }
+        
+        // 解析坐标（支持大小写）
+        char move_ic = std::toupper(input[0]);
+        std::string num_str = input.substr(1);
+        
+        // 检查字母是否越界
+        if (move_ic < 'A' || move_ic >= 'A' + board_size) {
+            std::cout << "行号超出范围，有效范围是 A-" << char('A' + board_size - 1) << std::endl;
+            continue;
+        }
+        
+        // 解析数字部分
+        try {
+            int move_j_int = std::stoi(num_str);
+            if (move_j_int < 1 || move_j_int > board_size) {
+                std::cout << "列号超出范围，有效范围是 1-" << board_size << std::endl;
+                continue;
+            }
+            
+            uint x = move_ic - 'A';
+            uint y = move_j_int - 1;
+            
+            // 检查位置是否非法（修正了拼写错误）
+            if (game.is_illegal(x, y)) {
+                std::cout << "该位置非法，请重新输入!" << std::endl;
+                continue;
+            }
+            
+            // 执行落子
+            int my_move = x * board_size + y;
+            game.execute_move(my_move);
+            
+        } catch (const std::exception& e) {
+            std::cout << "输入格式错误，请重新输入!" << std::endl;
+        }
+    }
+    
+    return 0;
 }

@@ -11,8 +11,6 @@ import random, struct
 
 import sys
 
-sys.path.append('../build_cchess')
-
 from neural_network import NeuralNetWorkWrapper
 
 
@@ -51,8 +49,7 @@ class Learner():
         # assert path.exists(model_path+'.pkl'),f"{model_path+'.pkl'} does not exist!!!"
         # print(f"loading {model_id}-th model")
         self.nnet.load_model(model_path)
-
-        data_path = path.join('..', 'build_cchess', 'data')
+        data_path = 'data'
         train_data = self.load_samples(data_path)
         random.shuffle(train_data)
 
@@ -158,7 +155,7 @@ class Learner():
 
 
 if __name__ == '__main__':
-    model_dir = path.join("..","build_cchess","weights")
+    model_dir = "weights"
     le = Learner(config.config)
     if len(sys.argv) <= 1 or sys.argv[1] == "prepare":
         print("save 0-th model !!")
@@ -166,10 +163,10 @@ if __name__ == '__main__':
         print("prepare model done!")
     else:
         assert sys.argv[1] == "train", sys.argv[1]
-        with open(path.join("..","build_cchess","current_and_best_weight.txt"), 'r') as f:
+        with open("current_and_best_weight.txt", 'r') as f:
             current_id, best_id =  f.readline().split(" ")
             current_id = int(current_id)
         le.learn(model_dir=model_dir, model_id=current_id)
-        with open(path.join("..","build_cchess","current_and_best_weight.txt"), 'w') as f:
+        with open("current_and_best_weight.txt", 'w') as f:
             f.write(str(int(current_id)+1) + " "+ str(best_id))
         
