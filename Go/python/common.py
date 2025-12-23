@@ -1,6 +1,6 @@
 config = {
-    'height':19, # 和go.h对齐
-    'width':19,
+    'height':9, # 和go.h对齐
+    'width':9,
     'lr': 0.001,                                # learning rate
     'l2': 0.0001,                               # L2
     'num_channels': 256,                        # convolution neural network channel size

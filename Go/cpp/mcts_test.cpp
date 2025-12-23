@@ -98,11 +98,12 @@ int main(int argc, char* argv[]) {
     // 游戏结束处理
     auto game_state = g->get_game_status();
     if (game_state.second == 0) {
-        cout << "游戏结束: 和棋 (" << g->time_limit <<"步相互无吃子)!" << endl;
+        cout << "游戏结束: 和棋 (" << g->get_step()-1 <<"步)!" << endl;
     } else {
-        cout << "游戏结束: " 
+        cout << "游戏结束("<< g->get_step()-1 << "/" << g->time_limit <<"步): " 
              << (game_state.second == Go::FirstColor ? "黑方" : "白方")
              << "获胜!" << endl;
+        g->print_score_detail();   // <-- 新增
     }
     
     return 0;

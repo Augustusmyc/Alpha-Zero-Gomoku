@@ -195,7 +195,7 @@ void Go::execute_move(move_type move) {
 }
 
 // 洪水填充计算领地
-std::pair<int, int> Go::count_territory() {
+std::pair<int, int> Go::count_territory() const {
     std::set<std::pair<unsigned int, unsigned int>> visited;
     std::set<std::pair<unsigned int, unsigned int>> black_territory;
     std::set<std::pair<unsigned int, unsigned int>> white_territory;
@@ -224,7 +224,7 @@ std::pair<int, int> Go::count_territory() {
 void Go::flood_fill_territory(unsigned int x, unsigned int y,
                               std::set<std::pair<unsigned int, unsigned int>>& visited,
                               std::set<std::pair<unsigned int, unsigned int>>& region,
-                              std::set<int>& adjacent_colors) {
+                              std::set<int>& adjacent_colors) const{
     std::queue<std::pair<unsigned int, unsigned int>> q;
     q.push({x, y});
     visited.insert({x, y});
@@ -253,58 +253,67 @@ void Go::flood_fill_territory(unsigned int x, unsigned int y,
     }
 }
 
-// 自动终局检测 + 智能计分
 std::pair<int, int> Go::get_game_status() {
-    // 检查是否还有合法着法
-    if (!has_legal_moves()) {
-        game_ended = true;
-    }
-    
-    // 自动终局：双方无有效着法或棋盘填满
+    if (!has_legal_moves()) game_ended = true;
     if (game_ended || position_history.size() > time_limit) {
-        // 在get_game_status()函数中找到领地计算后的部分
-        auto [black_territory, white_territory] = count_territory();
-
-        // 计算棋盘上的剩余棋子
-        int black_stones = 0, white_stones = 0;
-        for (unsigned int y = 0; y < height; y++) {
-            for (unsigned int x = 0; x < width; x++) {
-                if (board[y][x] == FirstColor) black_stones++;
-                else if (board[y][x] == SecondColor) white_stones++;
-            }
-        }
-
-
-
-        // 中国规则：子+目+俘虏
-        double black_score = black_captures + black_territory + black_stones;
-        double white_score = white_captures + white_territory + white_stones + komi;
-
-        
-        for (unsigned int y = 0; y < height; y++) {
-            for (unsigned int x = 0; x < width; x++) {
-                if (board[y][x] == FirstColor) black_score++;
-                else if (board[y][x] == SecondColor) white_score++;
-            }
-        }
-        
-        int winner = (black_score > white_score) ? FirstColor : SecondColor;
-
-        // std::cout << "\n=== 终局计分 ===" << std::endl;
-        // std::cout << "黑方得分: " << black_score 
-        //         << " (提子:" << black_captures 
-        //         << " 领地:" << black_territory 
-        //         << " 棋子:" << black_stones << ")" << std::endl;
-        // std::cout << "白方得分: " << white_score 
-        //         << " (提子:" << white_captures 
-        //         << " 领地:" << white_territory 
-        //         << " 棋子:" << white_stones 
-        //         << " 贴目:" << komi << ")" << std::endl;
-        // std::cout << "胜负: " << (winner == Black ? "黑胜" : "白胜") << std::endl;
-        return {1, winner};
+        auto sd = calc_score_detail();
+        return {1, sd.winner};   // 只给高层“是否终局+谁赢”
     }
-    
     return {0, 0};
+}
+
+// 内部算分，不打印
+Go::ScoreDetail Go::calc_score_detail() const {
+    ScoreDetail sd{};
+
+    // 1. 棋盘剩余棋子
+    sd.black_stones = 0;
+    sd.white_stones = 0;
+    for (unsigned int y = 0; y < height; ++y)
+        for (unsigned int x = 0; x < width; ++x)
+            if (board[y][x] == FirstColor) ++sd.black_stones;
+            else if (board[y][x] == SecondColor) ++sd.white_stones;
+
+    // 2. 领地
+    auto [bt, wt] = count_territory();
+    sd.black_territory = bt;
+    sd.white_territory = wt;
+
+    // 3. 俘虏
+    sd.black_captures = black_captures;
+    sd.white_captures = white_captures;
+    sd.komi           = komi;
+
+    // 4. 总得分（中国规则）
+    sd.black_score = sd.black_captures + sd.black_territory + sd.black_stones;
+    sd.white_score = sd.white_captures + sd.white_territory + sd.white_stones + sd.komi;
+
+    // 5. 胜负
+    if (std::abs(sd.black_score - sd.white_score) < 0.1) sd.winner = 0;
+    else sd.winner = (sd.black_score > sd.white_score) ? FirstColor : SecondColor;
+
+    return sd;
+}
+
+// 供外部调试：打印详细得分
+void Go::print_score_detail() const {
+    auto sd = calc_score_detail();
+
+    std::cout << "\n========== 终局详细得分 ==========\n";
+    std::cout << "黑方    提子: " << sd.black_captures
+              << "    领地: " << sd.black_territory
+              << "    棋子: " << sd.black_stones
+              << "    总分: " << sd.black_score << '\n';
+
+    std::cout << "白方    提子: " << sd.white_captures
+              << "    领地: " << sd.white_territory
+              << "    棋子: " << sd.white_stones
+              << "    贴目: " << std::fixed << std::setprecision(1) << sd.komi
+              << "    总分: " << sd.white_score << '\n';
+
+    if (sd.winner == 0) std::cout << "结果：平局\n";
+    else std::cout << "结果：" << (sd.winner == FirstColor ? "黑胜\n" : "白胜\n");
+    std::cout << "==================================\n";
 }
 
 // 其他方法实现...

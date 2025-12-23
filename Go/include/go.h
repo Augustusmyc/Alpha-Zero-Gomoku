@@ -30,8 +30,8 @@ public:
     static const int color_channel = 2*piece_num + 1;
     static const int time_channel = 2*piece_num + 2;
 
-    static const unsigned int board_width = 19;
-    static const unsigned int board_height = 19;
+    static const unsigned int board_width = 9; // 和python对齐,下同！
+    static const unsigned int board_height = 9;
     static const unsigned int input_size = board_width * board_height * (2*piece_num + 3);
     inline static const unsigned int action_size = board_width * board_height;
 
@@ -77,6 +77,8 @@ public:
             std::cerr << std::endl;
         }
     }
+ // 仅供调试/观战：打印详细得分与局面信息  
+    void print_score_detail() const;
 
 
 
@@ -99,11 +101,11 @@ private:
     std::unordered_set<uint64_t> position_history; // 历史局面
     
     // 领地计算
-    std::pair<int, int> count_territory();
+    std::pair<int, int> count_territory() const;
     void flood_fill_territory(unsigned int x, unsigned int y, 
                               std::set<std::pair<unsigned int, unsigned int>>& visited,
                               std::set<std::pair<unsigned int, unsigned int>>& region,
-                              std::set<int>& adjacent_colors);
+                              std::set<int>& adjacent_colors) const;
     
     struct Group {
         std::set<std::pair<unsigned int, unsigned int>> stones;
@@ -115,4 +117,18 @@ private:
     bool is_suicide(unsigned int x, unsigned int y, int color);
     bool violates_ko(unsigned int x, unsigned int y, int color);
     int count_liberties(unsigned int x, unsigned int y);
+    // 内部：把算分逻辑也拆出来，供两处复用
+    struct ScoreDetail {
+        int black_stones;
+        int white_stones;
+        int black_territory;
+        int white_territory;
+        int black_captures;
+        int white_captures;
+        double komi;
+        double black_score;   // 含俘虏+领地+棋子
+        double white_score;   // 含俘虏+领地+棋子+贴目
+        int winner;           // FirstColor/SecondColor/0(平局)
+    };
+    ScoreDetail calc_score_detail() const;
 };
